@@ -1,6 +1,6 @@
 ## CREATING K8S INGRESS:
 
-- First install NGINX-INGRESS CONTROLLER
+- Install NGINX Ingress Controller
 >     kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.0/deploy/static/provider/cloud/deploy.yaml
 
 - Create YAML file and apply to cluster
