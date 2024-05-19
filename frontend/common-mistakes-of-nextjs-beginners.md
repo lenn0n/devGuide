@@ -10,15 +10,16 @@ Meanwhile, client components runs in the browser.
 
 Things you cannot do/use in Server Components:
   1. Browser API (localStorage, windows)
-	2. React States and Hooks
-  
+  2. React States and Hooks
+
 Simple because you can only run these in client side rendering.
 Once you render the app, it will pre-render once in server side and all the way in the client side.
 
 You can mix these two by passing only as Props or Children.
 Example:
 
->     // VALID
+>     
+      // VALID
       <Server-Component>
         <Client-Component/>
       </Server-Component>
