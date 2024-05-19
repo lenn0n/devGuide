@@ -9,8 +9,9 @@ Server components will only run in the server side. This is the default behavior
 Meanwhile, client components runs in the browser.
 
 Things you cannot do/use in Server Components:
-	- Browser API (localStorage, windows)
-	- React States
+  1. Browser API (localStorage, windows)
+	2. React States and Hooks
+  
 Simple because you can only run these in client side rendering.
 Once you render the app, it will pre-render once in server side and all the way in the client side.
 
@@ -34,5 +35,5 @@ In case you encounter some of the packages you installed and uses Browser API, y
 	- Dynamic Import 
 	dynamic(()=> import('...'));
 
-You might get some ** Hydration Issues ** while rendering components. This is simply because the Server Side and Client Side
-should be the same. Eg: You use new Date() inside the client component, in the server the value is 00-0000-00 01:00:01 and the client, 00-0000-00 01:00:02. This would throw an error.
+You might get some **Hydration Issues** while rendering components. This is simply because the Server Side and Client Side
+**should be the same**. Eg: You use new Date() inside the client component, in the server the value is 00-0000-00 01:00:01 and the client, 00-0000-00 01:00:02. This would throw an error.
