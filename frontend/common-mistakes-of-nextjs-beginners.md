@@ -15,7 +15,6 @@ You can only run these in client side.
 But there is a caveat in this phenomenon. Once you render the app, it will pre-render once in server side and all the way in the client side.
 
 You can mix these two by passing only as Props or Children.
-Best Example:
 >     
       // VALID
       <Server-Component>
@@ -23,15 +22,15 @@ Best Example:
       </Server-Component>
 
       <Server-Component page={<Client-Component/> }/>
+      
+      // INVALID
+      use 'server';
+      import Client-Component from "..";
+      return <Client-Component/>;
+      
+The only reason behind is apparently nextjs is expecting server components only and got imported by one client component. Don't import the component and use them as props/children to avoid errors.
 
-Not valid:
-  1. You import different component in a single file.
-> 	- use 'server';
-	  import Client-Component from "..";
-	  return <Client-Component/>;
-
-In case you encounter some of the packages you installed and uses Browser API, you could use:
-  Dynamic Import 
+Alternatively, you can use dynamic import. 
   >     dynamic(()=> import('...'));
 
 You might get some **Hydration Issues** while rendering components. This is simply because the Server Side and Client Side
