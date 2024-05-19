@@ -35,3 +35,10 @@ Alternatively, you can use dynamic import.
 
 You might get some **Hydration Issues** while rendering components. This is simply because the Server Side and Client Side
 **should be the same**. Eg: You use new Date() inside the client component, in the server the value is 00-0000-00 01:00:01 and the client, 00-0000-00 01:00:02. This would throw an error.
+
+Handling multiple request in Parallel Mode:
+>      async getUser ... () => {}
+>      async getItems ... () => {}
+>      const [ users, items ] = Promise.allSettled([getUser(), getItems()]) 
+
+
