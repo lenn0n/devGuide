@@ -41,4 +41,8 @@ Handling multiple request in Parallel Mode:
 >      async getItems ... () => {}
 >      const [ users, items ] = Promise.allSettled([getUser(), getItems()]) 
 
+Using of revalidatePath from "next/cache" in server component is game changing.
+>      revalidatePath("PATH");
+
+
 
