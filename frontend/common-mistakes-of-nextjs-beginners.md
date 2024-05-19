@@ -2,10 +2,10 @@
 
 There are two components you can use in next.js
 
-1. Server Components 'use server'<-- default
+1. Server Components 'use server' (default)
 2. Client Components 'use client'
 
-Server components will only run on the server side. This is the default behavior of each page you create.
+Server components will only run in the server side. This is the default behavior of each page you create.
 Meanwhile, client components runs in the browser.
 
 Things you cannot do/use in Server Components:
