@@ -44,5 +44,55 @@ Handling multiple request in Parallel Mode:
 Using of revalidatePath from "next/cache" in server component is game changing.
 >      revalidatePath("PATH");
 
+Redirecting to 404 Page in Server Component:
+>      import { notFound } from "next/navigation"
+>      ...
+>      notFound();
+Create a file beside page.tsx and name it to not-found.tsx.
 
+Route Group - exempting from url route, simply wrap the name of folder with parenthesis. src/app/(auth)/login -> http://localhost/login
 
+Metadata - specify component/page metadata. Static or Dynamic
+>      import type { Metadata } from 'next'
+ 
+        // either Static metadata
+        export const metadata: Metadata = {
+          title: '...',
+        }
+         
+        // or Dynamic metadata
+        export async function generateMetadata({ params }) {
+          return {
+            title: '...',
+          }
+        }
+
+Deep Metadata - you can specify metadata for parent and children component. 
+>      import type { Metadata } from 'next'
+        // Parent Component
+        export async function generateMetadata({ params }) {
+          return {
+            title: {
+              absolute: "",
+              default: "Next.js - devGuide",
+              template: "%s | devGuide"
+            }
+          }
+        }
+
+       // Child Component
+        export async function generateMetadata({ params }) {
+          return {
+            title: "Hello From Child"
+          }
+        }
+The title of the page would be: Hello From Child | devGuide
+Please be aware of using 'absolute' key. This will be the fixed title even if you specify different title value in the children component.
+
+Creating layouts beside page.tsx is pretty helpful. You just need to use the { children } prop as React.ReactNode and it will automatically wrap the page.tsx for you.
+By using this, you must know:
+
+  /page.tsx - this is the page you put logic
+  --------
+  /layout.tsx - does NOT change and re-render
+  /template.tsx - does change and re-render
