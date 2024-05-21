@@ -10,7 +10,7 @@ The following commands are commonly used in CI/CD.
 >     adduser NAME_OF_USER
 
 ### SWITCH TO USER
->     su ### NAME_OF_USER
+>     su - NAME_OF_USER
 
 ### CHANGE PW OF CURRENT USER
 >     passwd
