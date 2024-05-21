@@ -92,3 +92,12 @@ nodeGroups:
   - name: ng-2
     instanceType: m5.xlarge
     desiredCapacity: 2
+
+
+HOW TO RESTART DEPLOYMENTS IN ECS?
+>		aws ecs update-service --cluster :clusterName --service :serviceName --force-new-deployment
+
+HOW TO RESTART DEPLOYMENTS IN EC2 AND EKS?
+use current context and type: 
+>		kubectl rollout restart DEPLOYMENT
+or use kubernetes-dashboard
