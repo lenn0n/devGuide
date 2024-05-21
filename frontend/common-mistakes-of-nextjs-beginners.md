@@ -1,5 +1,7 @@
 ## GETTING STARTED WITH NEXTJS
 
+Install: npx create-next-app@latest
+
 There are two components you can use in next.js
 
 1. Server Components 'use server' (default)
