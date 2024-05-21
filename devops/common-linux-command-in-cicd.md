@@ -1,6 +1,6 @@
-## These commands are commonly used in CI/CD.
+The following commands are commonly used in CI/CD. 
 
-## RESTART SSH SERVICE 
+### RESTART SSH SERVICE 
 >     sudo systemctl restart sshd
 
 ### REBOOT VM
