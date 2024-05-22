@@ -2,7 +2,9 @@
 The primary goal is to check whether the application behaves as expected. Giving you a lot of confidence and produce high quality features.
 
 **Unit testing** - testing a very small part of the code.
+
 **Integration testing** - test for a group of components that interacts with each other.
+
 **End-to-End Testing** - frontend to backend testing.
 
 ## Vitest - Testing Framework
