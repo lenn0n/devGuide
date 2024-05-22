@@ -6,11 +6,21 @@ Integration testing - test for a group of components that interacts with each ot
 End-to-End Testing - frontend to backend testing.
 
 ### Testing Framework
-Vitest - Suppoers ESM, Typescript and JSX
+Vitest - Supports ESM, Typescript and JSX
 
 ### Installation: 
 >      npm i -D vitest
 
+Add script to package.json:
+>      
+       "test": "vitest",
+       "test:ui": "vitest --ui"
+
 ### Add VSCode Extension:
 >      Vitest Snippets
-Start typing "iv" for shortcut of import vitest.
+
+### Shortcuts
+Type "iv" to add import ( it, expect, describe )
+Type "d" to add describe
+Type "i" to add it
+
