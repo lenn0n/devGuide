@@ -8,7 +8,7 @@ The primary goal is to check whether the application behaves as expected. Giving
 **End-to-End Testing** - frontend to backend testing.
 
 ## Vitest - Testing Framework
-**Vitest** - Supports ESM, Typescript and JSX
+**Vitest** - All syntax you use here will be exactly available in Jest. It supports ESM, Typescript and JSX which is currently experimental stage in Jest.
 
 ### Installation: 
 >      npm i -D vitest
@@ -37,8 +37,7 @@ Type "i" to add 'it'
 
 
 ## Add JSDOM
-By default, our test are executed in node environment. Node doesnt know about browser apis like the DOM.
-This will emulate our browser environment.
+By default, our tests are executed in the node environment. But Node doesn't know about browser APIs like DOM. Fortunately, we have JSDOM. This will emulate our browser apis in the node environment.
 
 ### Installation: 
 >      npm i -D jsdom@24.0.0
@@ -53,4 +52,27 @@ This will emulate our browser environment.
          }
        });
 
-
+## Example of Testing Library React
+>              
+              import { it, expect, describe } from 'vitest'
+              import { render, screen } from "@testing-library/react";
+              import Greet from '../../src/components/Greet';
+              import "@testing-library/jest-dom/vitest";
+              
+              describe('Greet', () => {
+                it('should render Hello with name when name is provided', () => {
+                  render(<Greet name="Lennon"/>)
+              
+                  const heading = screen.getByRole("heading");
+                  expect(heading).toBeInTheDocument()
+                  expect(heading).toHaveTextContent(/Lennon/)
+                })
+              
+                it('should render Login button with name when name is not provided', () => {
+                  render(<Greet/>)
+              
+                  const button = screen.getByRole("button");
+                  expect(button).toBeInTheDocument()
+                  expect(button).toHaveTextContent(/Login/)
+                })
+              })
