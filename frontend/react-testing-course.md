@@ -28,7 +28,10 @@ Type "d" to add 'describe'
 
 Type "i" to add 'it'
 
-## React and Jest-DOM Testing Library
+## Testing Library for Components using React and Jest-DOM 
+
+Testing library is the octopus you see in the internet. This library is the best to partner with Vitest/Jest.
+(Ofcouse kwento ko yun, ikaw na bahala dong)
 
 ### Installation: 
 >       
