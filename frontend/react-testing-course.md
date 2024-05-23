@@ -1,4 +1,4 @@
-### Why you should test?
+# Why you should test?
 The primary goal is to check whether the application behaves as expected. Giving you a lot of confidence and produce high quality features.
 
 **Unit testing** - testing a very small part of the code.
