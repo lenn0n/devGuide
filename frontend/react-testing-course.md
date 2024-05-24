@@ -57,7 +57,7 @@ By default, our tests are executed in the node environment. But Node doesn't kno
 ### When to use getBy, queryBy and findBy?
 1. You will only use **get(All)By** if the element you testing is in the DOM.
 2. The **query(All)By** is useful for asserting an element that is not present.
-3. **query(All)By** returns a promise which resolves when an element is found.
+3. **find(All)By** returns a promise which resolves when an element is found.
 
 
 ## Example of Testing Library React
