@@ -75,13 +75,17 @@ By default, our tests are executed in the node environment. But Node doesn't kno
 2. The **queryBy** is useful for asserting an element that is not present.
 3. Use **findBy** if the element / elements being queried might display asynchronously .
 
+### User Interactions
+       
 
 ## Example of Testing Library React
 >              
+              // DEFAULT IMPORTS
+              import "@testing-library/jest-dom/vitest";
               import { it, expect, describe } from 'vitest'
               import { render, screen } from "@testing-library/react";
+              
               import Greet from '../../src/components/Greet';
-              import "@testing-library/jest-dom/vitest";
               
               describe('Greet', () => {
                 it('should render Hello with name when name is provided', () => {
