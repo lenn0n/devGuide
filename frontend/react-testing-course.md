@@ -105,6 +105,38 @@ By default, our tests are executed in the node environment. But Node doesn't kno
                   expect(button).toHaveTextContent(/Login/)
                 })
               })
-
+              
+              describe('TermsAndConditions', () => {
+                // Arrange
+                render(<TermsAndConditions />)
+                it('should render terms and conditions page', () => {
+                  // Act
+                  const heading = screen.getByRole("heading");
+                  
+                  // Assert
+                  expect(heading).toBeInTheDocument()
+                  expect(heading).toHaveTextContent("Terms & Conditions")
+                  
+                  // Act
+                  const checkbox = screen.getByRole("checkbox");
+                  const button = screen.getByRole("button");
+              
+                  // Assert
+                  expect(checkbox).toBeInTheDocument()
+                  expect(checkbox).not.toBeChecked()
+                  expect(button).toBeDisabled()
+                })
+              
+                it('should enable the button when the checkbox is clicked', async () => {
+                  // Act
+                  const checkbox = screen.getByRole("checkbox");
+                  const button = screen.getByRole('button')
+                  const user = userEvent.setup();
+                  await user.click(checkbox)
+              
+                  // Assert
+                  expect(button).toBeEnabled()
+                })
+              })
 
 
