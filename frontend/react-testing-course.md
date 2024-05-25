@@ -36,6 +36,7 @@ Testing library is the octopus you see in the internet. This library is the best
 >       
        npm i -D @testing-library/react@14.2.0
        npm i -D @testing-library/jest-dom
+       npm i -D @testing-library/user-event
 
 
 ## Add JSDOM
