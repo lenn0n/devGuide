@@ -55,23 +55,22 @@ By default, our tests are executed in the node environment. But Node doesn't kno
          }
        });
 
-### RTL Queries
-## get
-**getBy**: returns the matching node, however will throw an error if multiple matches or no matches are found.
+## RTL Queries
+*getBy* - returns the matching node, however will throw an error if multiple matches or no matches are found.
 
-**getAllBy**: returns an array of matching nodes if at least one match is found and throws an error if no match is found.
+*getAllBy* - returns an array of matching nodes if at least one match is found and throws an error if no match is found.
 
-## query
-**queryBy**: returns the matching node if one match is found and null if no match is found, however will throw an error if multiple matches are found.
 
-**queryAllBy**: returns an array of matching nodes if at least one match is found and an empty array if no match is found.
+*queryBy* - returns the matching node if one match is found and null if no match is found, however will throw an error if multiple matches are found.
 
-## find
-**findBy**: returns a promise that returns the matching node, however will throw an error if multiple matches or no matches are found.
+*queryAllBy* - returns an array of matching nodes if at least one match is found and an empty array if no match is found.
 
-**findAllBy**: returns a promise that returns an array of matching nodes if at least one match is found and throws an error if no match is found.
 
-### When to use getBy, queryBy and findBy?
+*findBy* - returns a promise that returns the matching node, however will throw an error if multiple matches or no matches are found.
+
+*findAllBy* - returns a promise that returns an array of matching nodes if at least one match is found and throws an error if no match is found.
+
+## When to use getBy, queryBy and findBy?
 1. You will only use **getBy** if you expect the element / elements to be present upon query.
 2. The **queryBy** is useful for asserting an element that is not present.
 3. Use **findBy** if the element / elements being queried might display asynchronously .
