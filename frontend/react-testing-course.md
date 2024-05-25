@@ -90,17 +90,25 @@ By default, our tests are executed in the node environment. But Node doesn't kno
               
               describe('Greet', () => {
                 it('should render Hello with name when name is provided', () => {
+                  // Arrange
                   render(<Greet name="Lennon"/>)
-              
+                  
+                  // Act
                   const heading = screen.getByRole("heading");
+
+                  // Assert
                   expect(heading).toBeInTheDocument()
                   expect(heading).toHaveTextContent(/Lennon/)
                 })
               
                 it('should render Login button with name when name is not provided', () => {
+                  // Arrange
                   render(<Greet/>)
-              
+                  
+                  // Act
                   const button = screen.getByRole("button");
+                  
+                  // Assert
                   expect(button).toBeInTheDocument()
                   expect(button).toHaveTextContent(/Login/)
                 })
@@ -109,6 +117,7 @@ By default, our tests are executed in the node environment. But Node doesn't kno
               describe('TermsAndConditions', () => {
                 // Arrange
                 render(<TermsAndConditions />)
+                
                 it('should render terms and conditions page', () => {
                   // Act
                   const heading = screen.getByRole("heading");
