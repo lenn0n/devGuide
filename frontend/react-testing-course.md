@@ -76,9 +76,22 @@ By default, our tests are executed in the node environment. But Node doesn't kno
 2. The **queryBy** is useful for asserting an element that is not present.
 3. Use **findBy** if the element / elements being queried might display asynchronously .
 
-### User Interactions
+## User Interactions
+User interactions can be achieved using **user-event** from RTL.
+>              
+                  import userEvent from '@testing-library/user-event';
+                  
+                  it('should enable the button when the checkbox is clicked', async () => {
+                         
+                         // Act
+                         const checkbox = screen.getByRole("checkbox"); // Currently the box is unchecked.
+                         const user = userEvent.setup();
+                         await user.click(checkbox)
        
-
+                         // Assert
+                         expect(button).toBeEnabled()
+                  })
+               
 ## Example of Testing Library React
 >              
               // DEFAULT IMPORTS
