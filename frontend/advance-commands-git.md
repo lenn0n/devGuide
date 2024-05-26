@@ -14,3 +14,10 @@ To view previous commits, use:
 >      git log --oneline
 To see logs in a better view, use: 
 >      git log --graph --oneline --decorate
+To move changes in stash, use:
+>      git stash
+>      git stash pop <-- to apply back the stash changes
+### Summary
+1. Always try *git pull --rebase* first. If it works, you're done!
+2. If you get a merge conflict, you can undo everything with *git rebase --abort*
+3. Just pull normally using *git pull* and resolve conflicts using *git stash*.
