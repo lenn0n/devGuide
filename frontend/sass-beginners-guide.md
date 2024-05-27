@@ -157,3 +157,26 @@ To get the value, use:
           &:nth-child(2) {} 
         }
 
+        
+### Best Practices
+When you start to code in SCSS file, normally you would create an index file (index.scss)
+
+Inside of the file, for best practices, treat it only as a place for @use/imports.
+
+        index.scss
+        
+        // variables and functions
+        @import 'functions';
+        @import 'variables';
+        
+        // base
+        @import 'base';
+        
+        // colors
+        @import 'colors';
+        
+        // components (button, card)
+        @import 'components/card';
+        @import 'components/button';
+
+
