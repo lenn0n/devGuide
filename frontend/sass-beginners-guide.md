@@ -138,13 +138,22 @@ Using @extend lets you share a set of CSS properties from one selector to anothe
           border-color: yellow;
         }
 
-### Map
+### Mapping values
         $colors: (
-                "primary": $primary,
-                "secondary": "#fff"
+          "primary": $primary,
+          "secondary": "#fff"
         )
 
 To get the value, use: 
 
         map-get($colors, "purple");
+
+### Targeting element in a better way
+        .title {
+          &:hover {
+           color: $val
+          } 
+          &:last-child {} 
+          &:nth-child(2) {} 
+        }
 
