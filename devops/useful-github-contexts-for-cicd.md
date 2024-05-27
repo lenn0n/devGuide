@@ -1,9 +1,245 @@
-### Checking which branch triggers the pipeline:
->      github.ref
+## Github Contexts
+
+*github.ref_name* - displaying which branch triggers the pipeline.
+
+*github.token* - token equivalent to GITHUB_TOKEN defined in secrets.
+
+*github.job* - display job name
+
+*github.event_name* - display what type of action that triggers the pipeline.
+
 Example:
 >      
         prod-check:
-        if: ${{ github.ref == 'refs/heads/main' }}
+        if: ${{ github.ref_name == 'main' }}
         runs-on: ubuntu-latest
         steps:
           - run: echo "Deploying to production server on branch $GITHUB_REF"
+Full Context Example:
+>                
+         {
+          "token": "***",
+          "job": "build",
+          "ref": "refs/heads/master",
+          "sha": "bb9b1a8addcee203f62f8e7111cab550b2bb70d4",
+          "repository": "lenn0n/portfolio",
+          "repository_owner": "lenn0n",
+          "repository_owner_id": "45531522",
+          "repositoryUrl": "git://github.com/lenn0n/portfolio.git",
+          "run_id": "9244459796",
+          "run_number": "55",
+          "retention_days": "90",
+          "run_attempt": "1",
+          "artifact_cache_size_limit": "10",
+          "repository_visibility": "private",
+          "repo-self-hosted-runners-disabled": false,
+          "enterprise-managed-business-id": "",
+          "repository_id": "713247295",
+          "actor_id": "45531522",
+          "actor": "lenn0n",
+          "triggering_actor": "lenn0n",
+          "workflow": "Node.js CI",
+          "head_ref": "",
+          "base_ref": "",
+          "event_name": "push",
+          "event": {
+            "after": "bb9b1a8addcee203f62f8e7111cab550b2bb70d4",
+            "base_ref": null,
+            "before": "79ca77ca893ea38b67c787406f460c62b517b759",
+            "commits": [
+              {
+                "author": {
+                  "email": "45531522+lenn0n@users.noreply.github.com",
+                  "name": "Lennon Benedict D. Jansuy",
+                  "username": "lenn0n"
+                },
+                "committer": {
+                  "email": "noreply@github.com",
+                  "name": "GitHub",
+                  "username": "web-flow"
+                },
+                "distinct": true,
+                "id": "bb9b1a8addcee203f62f8e7111cab550b2bb70d4",
+                "message": "Update node.js.yml",
+                "timestamp": "2024-05-26T23:47:45+08:00",
+                "tree_id": "b50904e15982a2c0029a585428e0700e83e013a4",
+                "url": "https://github.com/lenn0n/portfolio/commit/bb9b1a8addcee203f62f8e7111cab550b2bb70d4"
+              }
+            ],
+            "compare": "https://github.com/lenn0n/portfolio/compare/79ca77ca893e...bb9b1a8addce",
+            "created": false,
+            "deleted": false,
+            "forced": false,
+            "head_commit": {
+              "author": {
+                "email": "45531522+lenn0n@users.noreply.github.com",
+                "name": "Lennon Benedict D. Jansuy",
+                "username": "lenn0n"
+              },
+              "committer": {
+                "email": "noreply@github.com",
+                "name": "GitHub",
+                "username": "web-flow"
+              },
+              "distinct": true,
+              "id": "bb9b1a8addcee203f62f8e7111cab550b2bb70d4",
+              "message": "Update node.js.yml",
+              "timestamp": "2024-05-26T23:47:45+08:00",
+              "tree_id": "b50904e15982a2c0029a585428e0700e83e013a4",
+              "url": "https://github.com/lenn0n/portfolio/commit/bb9b1a8addcee203f62f8e7111cab550b2bb70d4"
+            },
+            "pusher": {
+              "email": "45531522+lenn0n@users.noreply.github.com",
+              "name": "lenn0n"
+            },
+            "ref": "refs/heads/master",
+            "repository": {
+              "allow_forking": true,
+              "archive_url": "https://api.github.com/repos/lenn0n/portfolio/{archive_format}{/ref}",
+              "archived": false,
+              "assignees_url": "https://api.github.com/repos/lenn0n/portfolio/assignees{/user}",
+              "blobs_url": "https://api.github.com/repos/lenn0n/portfolio/git/blobs{/sha}",
+              "branches_url": "https://api.github.com/repos/lenn0n/portfolio/branches{/branch}",
+              "clone_url": "https://github.com/lenn0n/portfolio.git",
+              "collaborators_url": "https://api.github.com/repos/lenn0n/portfolio/collaborators{/collaborator}",
+              "comments_url": "https://api.github.com/repos/lenn0n/portfolio/comments{/number}",
+              "commits_url": "https://api.github.com/repos/lenn0n/portfolio/commits{/sha}",
+              "compare_url": "https://api.github.com/repos/lenn0n/portfolio/compare/{base}...{head}",
+              "contents_url": "https://api.github.com/repos/lenn0n/portfolio/contents/{+path}",
+              "contributors_url": "https://api.github.com/repos/lenn0n/portfolio/contributors",
+              "created_at": 1698905323,
+              "default_branch": "master",
+              "deployments_url": "https://api.github.com/repos/lenn0n/portfolio/deployments",
+              "description": "Source-Code of my portfolio with CI/CD pipelines : Build the App > Build docker image and push to DockerHub > Build and Push to Github Pages (public repo)",
+              "disabled": false,
+              "downloads_url": "https://api.github.com/repos/lenn0n/portfolio/downloads",
+              "events_url": "https://api.github.com/repos/lenn0n/portfolio/events",
+              "fork": false,
+              "forks": 0,
+              "forks_count": 0,
+              "forks_url": "https://api.github.com/repos/lenn0n/portfolio/forks",
+              "full_name": "lenn0n/portfolio",
+              "git_commits_url": "https://api.github.com/repos/lenn0n/portfolio/git/commits{/sha}",
+              "git_refs_url": "https://api.github.com/repos/lenn0n/portfolio/git/refs{/sha}",
+              "git_tags_url": "https://api.github.com/repos/lenn0n/portfolio/git/tags{/sha}",
+              "git_url": "git://github.com/lenn0n/portfolio.git",
+              "has_discussions": false,
+              "has_downloads": true,
+              "has_issues": true,
+              "has_pages": false,
+              "has_projects": true,
+              "has_wiki": true,
+              "homepage": "https://lenn0n.github.io/",
+              "hooks_url": "https://api.github.com/repos/lenn0n/portfolio/hooks",
+              "html_url": "https://github.com/lenn0n/portfolio",
+              "id": 713247295,
+              "is_template": false,
+              "issue_comment_url": "https://api.github.com/repos/lenn0n/portfolio/issues/comments{/number}",
+              "issue_events_url": "https://api.github.com/repos/lenn0n/portfolio/issues/events{/number}",
+              "issues_url": "https://api.github.com/repos/lenn0n/portfolio/issues{/number}",
+              "keys_url": "https://api.github.com/repos/lenn0n/portfolio/keys{/key_id}",
+              "labels_url": "https://api.github.com/repos/lenn0n/portfolio/labels{/name}",
+              "language": "TypeScript",
+              "languages_url": "https://api.github.com/repos/lenn0n/portfolio/languages",
+              "license": null,
+              "master_branch": "master",
+              "merges_url": "https://api.github.com/repos/lenn0n/portfolio/merges",
+              "milestones_url": "https://api.github.com/repos/lenn0n/portfolio/milestones{/number}",
+              "mirror_url": null,
+              "name": "portfolio",
+              "node_id": "R_kgDOKoNKPw",
+              "notifications_url": "https://api.github.com/repos/lenn0n/portfolio/notifications{?since,all,participating}",
+              "open_issues": 0,
+              "open_issues_count": 0,
+              "owner": {
+                "avatar_url": "https://avatars.githubusercontent.com/u/45531522?v=4",
+                "email": "45531522+lenn0n@users.noreply.github.com",
+                "events_url": "https://api.github.com/users/lenn0n/events{/privacy}",
+                "followers_url": "https://api.github.com/users/lenn0n/followers",
+                "following_url": "https://api.github.com/users/lenn0n/following{/other_user}",
+                "gists_url": "https://api.github.com/users/lenn0n/gists{/gist_id}",
+                "gravatar_id": "",
+                "html_url": "https://github.com/lenn0n",
+                "id": 45531522,
+                "login": "lenn0n",
+                "name": "lenn0n",
+                "node_id": "MDQ6VXNlcjQ1NTMxNTIy",
+                "organizations_url": "https://api.github.com/users/lenn0n/orgs",
+                "received_events_url": "https://api.github.com/users/lenn0n/received_events",
+                "repos_url": "https://api.github.com/users/lenn0n/repos",
+                "site_admin": false,
+                "starred_url": "https://api.github.com/users/lenn0n/starred{/owner}{/repo}",
+                "subscriptions_url": "https://api.github.com/users/lenn0n/subscriptions",
+                "type": "User",
+                "url": "https://api.github.com/users/lenn0n"
+              },
+              "private": true,
+              "pulls_url": "https://api.github.com/repos/lenn0n/portfolio/pulls{/number}",
+              "pushed_at": 1716738465,
+              "releases_url": "https://api.github.com/repos/lenn0n/portfolio/releases{/id}",
+              "size": 149086,
+              "ssh_url": "git@github.com:lenn0n/portfolio.git",
+              "stargazers": 0,
+              "stargazers_count": 0,
+              "stargazers_url": "https://api.github.com/repos/lenn0n/portfolio/stargazers",
+              "statuses_url": "https://api.github.com/repos/lenn0n/portfolio/statuses/{sha}",
+              "subscribers_url": "https://api.github.com/repos/lenn0n/portfolio/subscribers",
+              "subscription_url": "https://api.github.com/repos/lenn0n/portfolio/subscription",
+              "svn_url": "https://github.com/lenn0n/portfolio",
+              "tags_url": "https://api.github.com/repos/lenn0n/portfolio/tags",
+              "teams_url": "https://api.github.com/repos/lenn0n/portfolio/teams",
+              "topics": [
+                "ci-cd",
+                "docker",
+                "github-actions",
+                "github-pages"
+              ],
+              "trees_url": "https://api.github.com/repos/lenn0n/portfolio/git/trees{/sha}",
+              "updated_at": "2024-05-21T17:22:42Z",
+              "url": "https://github.com/lenn0n/portfolio",
+              "visibility": "private",
+              "watchers": 0,
+              "watchers_count": 0,
+              "web_commit_signoff_required": false
+            },
+            "sender": {
+              "avatar_url": "https://avatars.githubusercontent.com/u/45531522?v=4",
+              "events_url": "https://api.github.com/users/lenn0n/events{/privacy}",
+              "followers_url": "https://api.github.com/users/lenn0n/followers",
+              "following_url": "https://api.github.com/users/lenn0n/following{/other_user}",
+              "gists_url": "https://api.github.com/users/lenn0n/gists{/gist_id}",
+              "gravatar_id": "",
+              "html_url": "https://github.com/lenn0n",
+              "id": 45531522,
+              "login": "lenn0n",
+              "node_id": "MDQ6VXNlcjQ1NTMxNTIy",
+              "organizations_url": "https://api.github.com/users/lenn0n/orgs",
+              "received_events_url": "https://api.github.com/users/lenn0n/received_events",
+              "repos_url": "https://api.github.com/users/lenn0n/repos",
+              "site_admin": false,
+              "starred_url": "https://api.github.com/users/lenn0n/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/lenn0n/subscriptions",
+              "type": "User",
+              "url": "https://api.github.com/users/lenn0n"
+            }
+          },
+          "server_url": "https://github.com",
+          "api_url": "https://api.github.com",
+          "graphql_url": "https://api.github.com/graphql",
+          "ref_name": "master",
+          "ref_protected": false,
+          "ref_type": "branch",
+          "secret_source": "Actions",
+          "workflow_ref": "lenn0n/portfolio/.github/workflows/node.js.yml@refs/heads/master",
+          "workflow_sha": "bb9b1a8addcee203f62f8e7111cab550b2bb70d4",
+          "workspace": "/home/runner/work/portfolio/portfolio",
+          "action": "__run",
+          "event_path": "/home/runner/work/_temp/_github_workflow/event.json",
+          "action_repository": "actions/setup-node",
+          "action_ref": "v3",
+          "path": "/home/runner/work/_temp/_runner_file_commands/add_path_be07a713-8f4a-419f-9858-8e58129f3a81",
+          "env": "/home/runner/work/_temp/_runner_file_commands/set_env_be07a713-8f4a-419f-9858-8e58129f3a81",
+          "step_summary": "/home/runner/work/_temp/_runner_file_commands/step_summary_be07a713-8f4a-419f-9858-8e58129f3a81",
+          "state": "/home/runner/work/_temp/_runner_file_commands/save_state_be07a713-8f4a-419f-9858-8e58129f3a81",
+          "output": "/home/runner/work/_temp/_runner_file_commands/set_output_be07a713-8f4a-419f-9858-8e58129f3a81"
+        }
