@@ -138,3 +138,13 @@ Using @extend lets you share a set of CSS properties from one selector to anothe
           border-color: yellow;
         }
 
+### Map
+        $colors: (
+                "primary": $primary,
+                "secondary": "#fff"
+        )
+
+To get the value, use: 
+
+        map-get($colors, "purple");
+
