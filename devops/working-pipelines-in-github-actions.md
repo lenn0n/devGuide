@@ -13,8 +13,12 @@ MY CONFIGURED PIPELINES FOR GITHUB ACTIONS:
         on:
           push:
             branches: [ "master" ]
+            - 'folder1/**'
           pull_request:
             branches: [ "master" ]
+            paths:
+            - 'folder1/**'
+         
           # Allows you to run this workflow manually from the Actions tab
           workflow_dispatch:
         jobs:
