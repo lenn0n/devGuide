@@ -157,7 +157,51 @@ To get the value, use:
           &:nth-child(2) {} 
         }
 
+### Breakpoints
+You can create responsive breakpoints using mapping, mixins and media queries.
+
+Firstly, create breakpoint map.
+
+        $breakpoints = (
+          "xs": 0,
+          "sm: 480px,
+          "md": 720px,
+          "lg": 960px,
+          "xl": 1200px
+        )
         
+Now you have BP map, let's create some mixins. For string manipulation in sass, you can use: *#{val}*
+
+        @each $key, $val in $breakpoints {
+          @mixin #{$key}-screen {
+            @media(min-width: $val){
+              $content;
+            }
+          }
+        }
+
+        @mixin breakpoint ($bp) {
+          @media(min-width: $bp){
+            $content;
+          }
+        }
+
+Finally include it on your custom class name.
+
+        .alert {
+          @include xs-screen {
+            color: red
+          }
+          
+         @include lg-screen {
+            color: blue
+          }
+        
+         @include breakpoint(1600px) {
+            color: green
+          }
+        }
+             
 ### Best Practices
 When you start to code in SCSS file, normally you would create an index file (index.scss)
 
