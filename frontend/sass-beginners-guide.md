@@ -201,6 +201,15 @@ Finally include it on your custom class name.
             color: green
           }
         }
+
+### Using !default
+Using !default keyword after a variable declaration will use the initial value rather than the new value. 
+        
+        $primary: green;
+        ......
+        $primary: red !default;
+
+The color would still be 'green' instead of 'red' for the reason !default tells the compiler that if it has value already, ignore the newly-declared value.
              
 ### Best Practices
 When you start to code in SCSS file, normally you would create an index file (index.scss)
