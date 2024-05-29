@@ -1,8 +1,7 @@
 ### GIT ADVANCE TRICKS
-Change account logged in the terminal
+To switch account logged in from terminal, remove *git:https://github.com*. Github uses different password or access key stored in the windows credential.
 
-    git config --global user.name [Your User name]
-    git config --global user.email [Your Email]
+    rundll32.exe keymgr.dll, KRShowKeyMgr
   
 Instead of using: git add . git commit -m "message", you can directly use:
 
