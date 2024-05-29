@@ -1,7 +1,8 @@
 ### GIT ADVANCE TRICKS
 Change account logged in the terminal
 
-    rundll32.exe keymgr.dll, KRShowKeyMgr
+    git config --global user.name [Your User name]
+    git config --global user.email [Your Email]
   
 Instead of using: git add . git commit -m "message", you can directly use:
 
