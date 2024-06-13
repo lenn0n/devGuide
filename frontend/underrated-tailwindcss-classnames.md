@@ -11,3 +11,7 @@
 >      <parent className="group">
 >       <child className="group-hover:scale-150"/>
 >      </parent>
+
+
+### Using arithmetic in arbitrary values
+>      min-h-[calc(100vh-200px)]
