@@ -7,11 +7,9 @@
 >       root /var/www/_work/ci-cd/ci-cd/src/frontend/build;
 >       index index.html index.htm;
 >       server_name 8.220.128.99;
-
 >       location / {
 >         try_files $uri $uri/ /index.html;
 >       }
-
 >       location /api {
 >         proxy_pass http://localhost:5000/api;
 >         proxy_http_version 1.1;
