@@ -49,18 +49,23 @@ In this case, you can allow it by typing:*
 
 ## Adding SSL Certs using CERT-BOT
 
-### ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) Install SnapD:
+### ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) Install SnapD
     sudo apt update
     sudo apt install snapd
     
 ### ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) Get CertBot
     sudo snap install --classic certbot
 
-### ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) Register CertBot command to bin folder
+### ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) Register CertBot to BIN folder to become executable anywhere
     sudo ln -s /snap/bin/certbot /usr/bin/certbot
 
-### ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) Before proceding, make sure you have already created a domain. Run this command to allow CERT-BOT to automatically update your .conf files
+### ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) Before proceding, make sure you have already created a domain. Run this command to allow CERT-BOT to manage your config files and create a certificate
     sudo certbot --nginx
 
 ### ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) For auto-renew, use the command below
     sudo certbot renew --dry-run
+
+### That's all for now ~ TBC
+![#1589F0]( https://0ctozer0.store/cdn/shop/files/clove.png?v=1711440683&width=320)
+
+   
