@@ -21,11 +21,15 @@ In this case, you can allow it by typing:*
 
     sudo ufw allow 'Nginx HTTP'
 
+*Test if the NGINX service is working properly. Open with your browser and type your machine's public address.*
+
+*It should display a default page:* `Welcome to nginx!`
+
 ### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Create a configuration file
     nano /etc/nginx/sites-available/<NAME>.conf
 
 ### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Assume that you have already built an HTML files and ready to deploy
- Paste the code below in <NAME>.conf file:
+ Copy and paste the content below in your config file you just created:
  
     # If you are using non-root user, uncomment and provide user below:
     # user ubuntu;
