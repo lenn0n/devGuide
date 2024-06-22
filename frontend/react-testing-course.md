@@ -45,7 +45,7 @@ By default, our tests are executed in the node environment. But Node doesn't kno
 ### Installation: 
 >      npm i -D jsdom@24.0.0
 
-## Create vitest configuration file:
+## Create vitest configuration file: vitest.config.ts
 >       
        import { defineConfig } from "vitest/config";
 
