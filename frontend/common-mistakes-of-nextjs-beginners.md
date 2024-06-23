@@ -1,6 +1,8 @@
-## GETTING STARTED WITH NEXTJS
+## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Getting started with NEXT.JS
 
-Install: npx create-next-app@latest
+Start new project
+
+    npx create-next-app@latest
 
 There are two components you can use in next.js
 
@@ -38,12 +40,12 @@ Alternatively, you can use dynamic import.
 You might get some **Hydration Issues** while rendering components. This is simply because the Server Side and Client Side
 **should be the same**. Eg: You use new Date() inside the client component, in the server the value is 00-0000-00 01:00:01 and the client, 00-0000-00 01:00:02. This would throw an error.
 
-## Handling multiple request in Parallel Mode:
+## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Handling multiple request in Parallel Mode:
 >      async getUser ... () => {}
 >      async getItems ... () => {}
 >      const [ users, items ] = Promise.allSettled([getUser(), getItems()]) 
 
-## Using of revalidatePath from "next/cache" in server component is game changing.
+## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Using of revalidatePath from "next/cache" in server component is game changing.
 >      revalidatePath("PATH");
 
 ## Redirecting to 404 Page in Server Component:
@@ -52,9 +54,9 @@ You might get some **Hydration Issues** while rendering components. This is simp
 >      notFound();
 Create a file beside page.tsx and name it to not-found.tsx.
 
-## Route Group - exempting from url route, simply wrap the name of folder with parenthesis. src/app/(auth)/login -> http://localhost/login
+## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Route Group - exempting from url route, simply wrap the name of folder with parenthesis. src/app/(auth)/login -> http://localhost/login
 
-## Metadata - specify component/page metadata. Static or Dynamic
+## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Metadata - specify component/page metadata. Static or Dynamic
 >       
         import type { Metadata } from 'next'
  
@@ -70,7 +72,7 @@ Create a file beside page.tsx and name it to not-found.tsx.
           }
         }
 
-## Deep Metadata - you can specify metadata for parent and children component. 
+## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Deep Metadata - you can specify metadata for parent and children component. 
 >        
        import type { Metadata } from 'next'
         // Parent Component
@@ -94,7 +96,7 @@ The title of the page would be: Hello From Child | devGuide
 
 Please be aware of using 'absolute' key. This will be the fixed title even if you specify different title value in the children component.
 
-## Creating layouts beside page.tsx is pretty helpful. You just need to use the { children } prop as React.ReactNode and it will automatically wrap the page.tsx for you.
+## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Creating layouts beside page.tsx is pretty helpful. You just need to use the { children } prop as React.ReactNode and it will automatically wrap the page.tsx for you.
 By using this, you must know:
 
 /page.tsx - this is the page you put logic
