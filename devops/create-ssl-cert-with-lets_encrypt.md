@@ -1,9 +1,9 @@
 ## CREATE SSL CERT WITH LET'S ENCRYPT
 
-- INSTALL CERT MANAGER
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) INSTALL CERT MANAGER
 >     kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.12.0/cert-manager.yaml
 
-- CREATE CLUSTER ISSUER YAML FILE AND APPLY TO CLUSTER
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) CREATE CLUSTER ISSUER YAML FILE AND APPLY TO CLUSTER
 >     apiVersion: cert-manager.io/v1
 >     kind: ClusterIssuer
 >     metadata:
@@ -21,7 +21,7 @@
 >               class: nginx
 
 
-- CREATE CERTIFICATE YAML FILE AND APPLY TO CLUSTER
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) CREATE CERTIFICATE YAML FILE AND APPLY TO CLUSTER
 >     apiVersion: cert-manager.io/v1
 >     kind: Certificate
 >     metadata:
@@ -50,12 +50,12 @@
 >         group: cert-manager.io
 
 
-- UPDATE INGRESS AND ADD TLS OBJECT AND USE SECRETNAME **secure-lenn0n-xyz-tls**
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) UPDATE INGRESS AND ADD TLS OBJECT AND USE SECRETNAME **secure-lenn0n-xyz-tls**
 >       tls:
 >       - hosts:
 >         - lenn0n.xyz
 >         secretName: secure-lenn0n-xyz-tls
 
 
-FOR NGINX + UBUNTU SERVER, FOLLOW CERT-BOT:
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) FOR NGINX + UBUNTU SERVER, FOLLOW CERT-BOT:
 >   https://certbot.eff.org/instructions?ws=nginx&os=ubuntuxenial
