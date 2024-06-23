@@ -70,4 +70,5 @@ i18next is an internationalization-framework written in and for JavaScript.
 `Hello World! CODE_VALUE Some Custom JSX CUSTOM_JSX_VALUE`
 
 ### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Update Translation
-     i18n.changeLanguage(code)
+     const lng: string = 'en' // the value should match the lng name 
+     i18n.changeLanguage(en)
