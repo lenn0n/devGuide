@@ -1,20 +1,20 @@
 ## CREATE SIMPLE EXPRESS SERVER IN TYPESCRIPT
 
-1. Install packages
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Install packages
 >     git init
 >     npm init
 >     npm install express cors dotenv
 >     npm install @types/cors @types/express @types/node typescript nodemon ts-node tsconfig-paths -D
 
-2. Add script object inside package.json
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Add script object inside package.json
 >     "scripts": {
 >       "start": "nodemon -r tsconfig-paths/register src/app.ts"
 >     },
 
-3. Add .gitignore in root folder:
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Add .gitignore in root folder:
 >     node_modules 
 
-4. Add tsconfig and updated
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Add tsconfig and updated
 *npx --init*
 or
 *tsc --init*
@@ -33,11 +33,11 @@ or
 >       "./src/**/*"
 >     ]
 
-5. Create .env in root folder
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Create .env in root folder
 >     SERVER_HOST='localhost'
 >     SERVER_PORT='5000'
 
-6. Create file in /src/app.ts
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Create file in /src/app.ts
 >     import express from "express"
 >     import routes from "@routes/api-routes"
 >     import cors from 'cors';
@@ -57,7 +57,7 @@ or
 >       console.info(`API Server is now running on port ${process.env.SERVER_PORT}.`)
 >     })
 
-7. Create file in /src/routes/api-routes.ts
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Create file in /src/routes/api-routes.ts
 >       import { Router } from "express";
 >       import { NextFunction, Request, Response } from "express";
 > 
