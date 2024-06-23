@@ -1,5 +1,5 @@
 --------------------------------
-CICD RealWorld Example:
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) CICD RealWorld Example:
 --------------------------------
 
 1. Talk about phasing:
@@ -36,7 +36,7 @@ Phase 4: Setup monitoring tools
 
 
 --------------------------------
-GETTING STARTED WITH AWS ECS:
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) GETTING STARTED WITH AWS ECS:
 --------------------------------
 
 Prequisite: Setup Amazon ECR
@@ -53,7 +53,7 @@ Prequisite: Setup Amazon ECR
 
 
 --------------------------------
-GETTING STARTED WITH AWS EC2:
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) GETTING STARTED WITH AWS EC2:
 --------------------------------
 
 1. Create an Instance
@@ -67,7 +67,7 @@ GETTING STARTED WITH AWS EC2:
 
 
 --------------------------------
-GETTING STARTED WITH AWS EKS:
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) GETTING STARTED WITH AWS EKS:
 --------------------------------
 
 - Install EKSCTL CLI tool for managing cluster
