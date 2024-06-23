@@ -1,18 +1,21 @@
 ## SELF-SIGNED CERTS USING CERT-MANAGER
 
-- INSTALL CERT-MANAGER IN CLUSTER USING MANIFEST
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) INSTALL CERT-MANAGER IN CLUSTER USING MANIFEST
 >     kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.4/cert-manager.yaml
 
-- CREATE KEY AND CERT FROM URL
-	* KEY: 
-  >     openssl genrsa -out ca.key 2048
-	* CRT: 
-  >     openssl req -x509 -new -nodes -key ca.key -sha256 -subj "//CN=URL" - days 1024 -out ca.crt
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) CREATE KEY AND CERT FROM URL
+Generate Key:
+	 
+	openssl genrsa -out ca.key 2048
 
-- CREATE SECRET ca-key-pair TO CLUSTER
+Generate Certificate:
+
+	openssl req -x509 -new -nodes -key ca.key -sha256 -subj "//CN=URL" - days 1024 -out ca.crt
+
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  CREATE SECRET ca-key-pair TO CLUSTER
 >     kubectl create secret tls ca-key-pair --key=ca.key --cert=ca.crt
 
-- CREATE ISSUER YAML FILE AND APPLY TO CLUSTER
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) CREATE ISSUER YAML FILE AND APPLY TO CLUSTER
 >     apiVersion: cert-manager.io/v1
 >     kind: Issuer
 >     metadata:
@@ -22,7 +25,7 @@
 >      ca:
 >       secretName: ca-key-pair
 
-- CREATE CERTIFICATE YAML FILE AND APPLY TO CLUSTER
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  CREATE CERTIFICATE YAML FILE AND APPLY TO CLUSTER
 >     apiVersion: cert-manager.io/v1
 >     kind: Certificate
 >     metadata:
@@ -37,7 +40,7 @@
 >      dnsNames:
 >       - www.lenn0n.xyz
 
-- USE secretName: lenn0n-xyz-tls IN INGRESS FILE
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) USE secretName: lenn0n-xyz-tls IN INGRESS FILE
 >       tls:
 >       - hosts:
 >         - lenn0n.xyz
