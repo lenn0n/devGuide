@@ -42,7 +42,7 @@ i18next is an internationalization-framework written in and for JavaScript.
       
   Sample Content:
     
-    {  greeting: "Hello World! {{ code }}" }
+    {  greeting: "Hello World! {{ code }} <1>Some Custom JSX {{ custom }}</1> :)" }
 
 ### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Basic Usage
 
@@ -52,16 +52,22 @@ i18next is an internationalization-framework written in and for JavaScript.
     ...
     
     // Simple use and If you are using namespace
-    { t("greeting", { ns: 'common', years: "4" }) }
+    { t("greeting", { ns: 'common', code: "CODE_VALUE" }) }
 
     // If you are using custom render, you pass the code as values
     <Trans
       i18nKey={t("greeting")}
-      values={{ code: 'Lennon' }}
+      values={{ 
+          code: 'CODE_VALUE', 
+          custom: 'CUSTOM_JSX_SAMPLE'
+      }}
       components={{
         1: <div className="text-cyan-300 transition-all hover:text-yellow-500 " />
       }}
     />
+
+### Expected Output
+`Hello World! CODE_VALUE Some Custom JSX CUSTOM_JSX_VALUE`
 
 ### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Update Translation
      i18n.changeLanguage(code)
