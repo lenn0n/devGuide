@@ -51,10 +51,10 @@ i18next is an internationalization-framework written in and for JavaScript.
     const { t } = useTranslation(['translation', 'common']);
     ...
     
-    // Simple use and If you are using namespace
+    // Basic usage
     { t("greeting", { ns: 'common', code: "CODE_VALUE" }) }
 
-    // If you are using custom render, you pass the code as values
+    // For custom rendering
     <Trans
       i18nKey={t("greeting")}
       values={{ 
