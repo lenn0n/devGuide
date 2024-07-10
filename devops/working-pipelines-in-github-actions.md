@@ -1,12 +1,7 @@
+### If you are using self-hosted environment, install runners inside your machine, EC2. 
+### Goto your repository > Settings > Actions > Runners.
 
---------------------------------
-MY CONFIGURED PIPELINES FOR GITHUB ACTIONS:
---------------------------------
-
-## If you are using self-hosted env, install runners in your VM, EC2. Goto Github Repo > Settings > Actions > Runners.
-## Once changes was made in private repository (github), the runner will trigger and execute the job.
-
-## WORKFLOW FILE:  /.github/workflows/node.js.yml
+### WORKFLOW FILE:  /.github/workflows/node.js.yml
 
 >      
       name: Node.js CI 
@@ -139,3 +134,6 @@ MY CONFIGURED PIPELINES FOR GITHUB ACTIONS:
                   KUBE_CONTEXT: ${{ secrets.KUBE_CONTEXT }}
                 with:
                   args: rollout restart deployment/$DEPLOYMENT -n $NAMESPACE
+
+
+### Note: If you pushed some changes in your repository, the runner will trigger and execute the job.
