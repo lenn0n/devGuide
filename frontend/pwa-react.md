@@ -117,3 +117,6 @@ We will be using the guide from official node package: https://www.npmjs.com/pac
       generator: "Next.js",
       manifest: "/manifest.json"
     };
+
+## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Others
+You can use template and start a new project in React with PWA pre-installed.
