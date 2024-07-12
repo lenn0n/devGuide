@@ -1,8 +1,8 @@
 ## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) PWA React
-PWA or Progressive Web App is a web application that provides user experience similar to native apps. It is installable and can work in offline thru service worker and Workbox.
+PWA or Progressive Web App is a web application that provides user experience similar to native apps. It can be installed and work in offline thru service worker and Workbox.
 
-## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Setup
-Create a **manifest.json** in your public directory. Make sure the path of icon is **correct**. This wont work if one is missing.
+## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) App Installable
+Create a **manifest.json** in your public directory. Make sure the path of icon is **correct** or else this wont work.
 
     {
       "short_name": "lenn0n.xyz",
@@ -118,5 +118,7 @@ We will be using the guide from official node package: https://www.npmjs.com/pac
       manifest: "/manifest.json"
     };
 
-## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Others
-You can use template and start a new project in React with PWA pre-installed.
+## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Using Template
+You can use template when you start a new project in ReactJS with PWA option
+
+    npx create-react-app my-app --template cra-template-pwa
