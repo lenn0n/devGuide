@@ -203,6 +203,9 @@ FCM is built on Google Play Services and is the successor to Google Cloud Messag
       }
 
 
+  ## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Testing push notifications
+  Go to Firebase> Engage> Messaging and click on create your first campaign. Select the message type as Firebase Notification messages and customize your notification message by providing a title, body, and image(optional).
+  Use the token generated in your console. 
   
   ## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) If you are having some issues in typescript mixing, update tsconfig.json and allow JS.
 
