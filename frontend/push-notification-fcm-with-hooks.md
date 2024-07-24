@@ -10,11 +10,11 @@ FCM is built on Google Play Services and is the successor to Google Cloud Messag
 
   ## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Login to Google Firebase Console
     - Create Project
-    - Generate Firebase config
     - Project settings > General > Your apps > Web 
-    - Create VAPID key pair. You will be using this in getToken() instance of FCM
+    - Generate Firebase config
+    - Generate VAPID key pair. You will be using this in getToken() instance of FCM
 
-  ## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Create a config file 'firebaseConfig.js' from the previous config.
+  ## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Create a config file 'firebaseConfig.js' from the previous config. In my case, I will put this in a folder named 'firebase'
     import { initializeApp } from "firebase/app";
     import { getMessaging } from "firebase/messaging";
     
@@ -35,7 +35,7 @@ FCM is built on Google Play Services and is the successor to Google Cloud Messag
     export const messaging = getMessaging(app)
 
 
-  ## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Create firebase service worker, name it by 'firebase-messaging-sw.js' (IMPORTANT) and put it in your public folder.
+  ## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Create firebase service worker, name it by 'firebase-messaging-sw.js' (IMPORTANT) and put it in your public folder
 
     // Scripts for firebase and firebase messaging
     importScripts("https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js");
