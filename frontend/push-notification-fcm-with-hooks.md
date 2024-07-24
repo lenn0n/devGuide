@@ -77,12 +77,15 @@ FCM is built on Google Play Services and is the successor to Google Cloud Messag
         body: payload.notification.body,
         icon: payload.notification.image,
       };
-    
-      self.registration.showNotification(notificationTitle, notificationOptions);
+      
+      navigator.serviceWorker.ready.then(function (registration) {
+        registration.showNotification(notificationTitle, notificationOptions);
+      });
     });
 
   ## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Create a hook file, eg. /hooks/useNotification.ts
-
+    
+        
     import { getToken } from "firebase/messaging";
     import { messaging } from "PATH_TO/firebaseConfig"
     
@@ -130,8 +133,11 @@ FCM is built on Google Play Services and is the successor to Google Cloud Messag
               if (firebaseNotifyRetry < 1) {
                 setTimeout(async () => {
                   firebaseNotifyRetry += 1;
-                  return await requestFirebaseNotify()
-                }, 2000);
+                  const token = await getToken(messaging, {
+                    vapidKey: process.env.VAPID_KEY,
+                  });
+                  console.log("Hi developer! This log is intended. Your FCM key:", { fcm: token }, 'You can use this to test push notification. -Lennon')
+                }, 500);
               }
             }
           }
@@ -147,6 +153,14 @@ FCM is built on Google Play Services and is the successor to Google Cloud Messag
               return await watchPermissionChanges()
             })
           }
+        }
+      }
+    
+      const checkIfNotificationIsGranted = (): boolean =>{
+        if ('Notification' in window) {
+          return Notification.permission === 'granted'
+        } else {
+          return false
         }
       }
     
@@ -175,7 +189,8 @@ FCM is built on Google Play Services and is the successor to Google Cloud Messag
       return {
         notify,
         requestFirebaseNotify,
-        requestNotificationAPI
+        requestNotificationAPI,
+        checkIfNotificationIsGranted
       }
     
     }
