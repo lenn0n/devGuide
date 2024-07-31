@@ -34,7 +34,7 @@ Finally, insert this into your HTML file. Your application will now have install
 
     <link rel="manifest" href="manifest.json">
 
-## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Working with Webpack 5
+## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Working with Webpack 5 and GenerateSW
 We will be using the guide from official website of webpack: https://webpack.js.org/guides/progressive-web-application
 
 ### First, Install Workbox Webpack Plugin
@@ -122,3 +122,135 @@ We will be using the guide from official node package: https://www.npmjs.com/pac
 You can use template when you start a new project in ReactJS with PWA option
 
     npx create-react-app my-app --template cra-template-pwa
+
+
+## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Working with Webpack 5 and InjectManifest
+We will be using *workbox-window* and *workbox-precaching*.
+
+### First, Install Workbox Webpack Plugins
+    npm install workbox-webpack-plugin workbox-window workbox-precaching --save-dev
+
+
+### Next, lets update webpack.config.js
+
+     const WorkboxPlugin = require('workbox-webpack-plugin');
+     
+      ...
+      
+       plugins: [
+         ...,
+          new WorkboxPlugin.InjectManifest({
+          swSrc: "./src/workbox/service-worker.js",
+          swDest: "service-worker.js",
+          exclude: [''],
+        }),
+      ],
+
+### Next, create a file in /src/workbox/service-worker.js and insert:
+
+    import { precacheAndRoute } from 'workbox-precaching';
+    
+    precacheAndRoute(self.__WB_MANIFEST);
+
+### Create useWorkbox Hook:
+
+    import { Workbox } from "workbox-window";
+    
+    type ConfigProps = {
+      path: string,
+      onLoad: boolean,
+      successMessage?: string,
+      errorMessage?: string,
+      actionForWaitingState?: Function
+    }
+    export const registerServiceWorker = (config: ConfigProps) => {
+      if ('serviceWorker' in navigator) {
+    
+        const register = () => {
+          const wb = new Workbox(config.path);
+    
+          wb.addEventListener('activated', event => {
+            // `event.isUpdate` will be true if another version of the service
+            // worker was controlling the page when this version was registered.
+            if (!event.isUpdate) {
+              console.log('Service worker activated for the first time!');
+            }
+    
+            // Get the current page URL + all resources the page loaded.
+            const urlsToCache = [
+              location.href,
+              ...performance.getEntriesByType('resource').map(r => r.name),
+            ];
+    
+            // Send that list of URLs to your router in the service worker.
+            wb.messageSW({
+              type: 'CACHE_URLS',
+              payload: { urlsToCache },
+            });
+          });
+    
+          wb.addEventListener('waiting', event => {
+            wb.messageSkipWaiting();
+            if (typeof config.actionForWaitingState === 'function') {
+              config.actionForWaitingState()
+            }
+          });
+    
+          wb.addEventListener('message', event => {
+            if (event.data.type === 'CACHE_UPDATED') {
+              const { updatedURL } = event.data.payload;
+              console.log(`A newer version of ${updatedURL} is available!`);
+            }
+          });
+    
+          return wb.register()
+        }
+    
+        if (config.onLoad) window.addEventListener('load', () => { register() });
+        else register()
+      }
+    }
+    
+    export const unregisterServiceWorker = () => {
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        if (!registrations.length) {
+          console.log('No serviceWorker registrations found.')
+          return
+        }
+        for (let registration of registrations) {
+          registration.unregister()
+        }
+      }).then(() => {
+        setTimeout(() => {
+          window.location.reload()
+        }, 100);
+      })
+    }
+
+### Finally, insert this in your index.tsx file
+
+    import { registerServiceWorker, unregisterServiceWorker } from '@hooks/useWorkbox';
+    
+    ...
+    
+    
+    root.render(
+      <App>
+        <div id="pwa-waiting-banner" className='hidden p-1 bg-slate-900 md:bg-opacity-40 text-center w-[100vw] absolute top-0 left-0 '>
+          <div className="flex items-center justify-center">
+            <div>Looks like you are viewing <span className='text-red-400'>outdated</span> version of my portfolio.
+            <span className='underline mx-1 text-yellow-500' role='button' onClick={unregisterServiceWorker}>Click here</span>to reload the page.
+            </div>
+          </div>
+        </div>
+      </App>
+    )
+    
+    registerServiceWorker({
+      onLoad: true,
+      successMessage: "Great! Service worker for caching has been enabled.",
+      path: "/service-worker.js",
+      actionForWaitingState: () => {
+        document.getElementById("pwa-waiting-banner")?.classList.remove("hidden")
+      }
+    })
