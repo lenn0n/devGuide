@@ -1,3 +1,8 @@
+#### Env
+Add secret key in your env
+
+    SECRET_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
 #### Usage
 
     import useEncryption from "@hooks/useEncryption;
