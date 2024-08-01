@@ -1,8 +1,6 @@
 
 import { getToken } from "firebase/messaging";
-import { messaging } from "../messaging/firebaseConfig" // optional FCM
-
-let onPermissionChange: NodeJS.Timeout, firebaseNotifyRetry = 0
+import { messaging } from "../messaging/firebaseConfig"
 
 type NotifProps = {
   title: string,
@@ -10,13 +8,9 @@ type NotifProps = {
   body: string
 }
 
-const useNotification = () => {
+let FCMTimeout: NodeJS.Timeout, FCMRetry: number = 0
 
-  const notify = async (content: NotifProps) => {
-    return await requestNotificationAPI().then((permission) => {
-      if (permission) notifyGuest(content)
-    })
-  }
+const useNotification = () => {
 
   const requestFirebaseNotify = async () => {
     return await requestNotificationAPI().then(async (permission) => {
@@ -27,50 +21,51 @@ const useNotification = () => {
           });
           return token
         } catch (error) {
-          if (firebaseNotifyRetry < 1) {
-            setTimeout(async () => {
-              firebaseNotifyRetry += 1;
+          if (FCMRetry < 1) {
+            FCMTimeout = setTimeout(async () => {
+              FCMRetry += 1;
               const token = await getToken(messaging, {
                 vapidKey: process.env.VAPID_KEY,
               });
-              console.log("Hi developer! This log is intended. Your FCM key:", { fcm: token }, 'You can use this to test push notification. -Lennon')
+              console.log(
+                "Hi developer! This log is intended. Your FCM key:",
+                { fcm: token },
+                'You can use this to test push notification. -Lennon'
+              )
             }, 500);
-          }
+          } 
+          else clearTimeout(FCMTimeout)
         }
       }
     })
   }
-
 
   const requestNotificationAPI = async () => {
     if ('Notification' in window) {
       if (Notification.permission === 'granted') return true
       else {
         return await Notification.requestPermission().then(async () => {
-          return await watchPermissionChanges()
+          return checkIfNotificationIsGranted()
         })
       }
     }
+    else return false
   }
 
-  const checkIfNotificationIsGranted = (): boolean =>{
+  const checkIfNotificationIsGranted = (): boolean => {
     if ('Notification' in window) {
       return Notification.permission === 'granted'
-    } else {
-      return false
     }
+    else return false
   }
 
-  const watchPermissionChanges = () => {
-    return onPermissionChange = setInterval(() => {
-      if (Notification.permission === 'granted') {
-        clearInterval(onPermissionChange)
-        return true
-      }
-    }, 1000)
+  const notify = async (content: NotifProps) => {
+    return await requestNotificationAPI().then((permission) => {
+      if (permission) showPushNotification(content)
+    })
   }
 
-  const notifyGuest = async (data: NotifProps) => {
+  const showPushNotification = async (data: NotifProps) => {
     navigator.serviceWorker.ready.then(function (registration) {
       registration.showNotification(
         data.title,
@@ -88,7 +83,6 @@ const useNotification = () => {
     requestNotificationAPI,
     checkIfNotificationIsGranted
   }
-
 }
 
 export default useNotification
