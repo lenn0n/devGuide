@@ -128,7 +128,7 @@ You can use template when you start a new project in ReactJS with PWA option
 We will be using *workbox-window* and *workbox-precaching*.
 
 ### First, Install Workbox Webpack Plugins
-    npm install workbox-webpack-plugin workbox-window workbox-precaching --save-dev
+    npm install workbox-webpack-plugin workbox-window workbox-precaching workbox-core --save-dev
 
 
 ### Next, lets update webpack.config.js
@@ -149,83 +149,21 @@ We will be using *workbox-window* and *workbox-precaching*.
 ### Next, create a file in /src/workbox/service-worker.js and insert:
 
     import { precacheAndRoute } from 'workbox-precaching';
+    import { clientsClaim, skipWaiting } from 'workbox-core';
     
+    // This will skip the waiting time on new service worker.
+    skipWaiting();
+    
+    // Triggers only for the first time service worker gets activated.
+    clientsClaim();
+    
+    // This will handle cache and navigations.
     precacheAndRoute(self.__WB_MANIFEST);
+
 
 ### Create useWorkbox Hook:
 
-    import { Workbox } from "workbox-window";
-    
-    type ConfigProps = {
-      path: string,
-      onLoad: boolean,
-      successMessage?: string,
-      errorMessage?: string,
-      actionForWaitingState?: Function
-    }
-    export const registerServiceWorker = (config: ConfigProps) => {
-      if ('serviceWorker' in navigator) {
-    
-        const register = () => {
-          const wb = new Workbox(config.path);
-    
-          wb.addEventListener('activated', event => {
-            // `event.isUpdate` will be true if another version of the service
-            // worker was controlling the page when this version was registered.
-            if (!event.isUpdate) {
-              console.log('Service worker activated for the first time!');
-            }
-    
-            // Get the current page URL + all resources the page loaded.
-            const urlsToCache = [
-              location.href,
-              ...performance.getEntriesByType('resource').map(r => r.name),
-            ];
-    
-            // Send that list of URLs to your router in the service worker.
-            wb.messageSW({
-              type: 'CACHE_URLS',
-              payload: { urlsToCache },
-            });
-          });
-    
-          wb.addEventListener('waiting', event => {
-            wb.messageSkipWaiting();
-            if (typeof config.actionForWaitingState === 'function') {
-              config.actionForWaitingState()
-            }
-          });
-    
-          wb.addEventListener('message', event => {
-            if (event.data.type === 'CACHE_UPDATED') {
-              const { updatedURL } = event.data.payload;
-              console.log(`A newer version of ${updatedURL} is available!`);
-            }
-          });
-    
-          return wb.register()
-        }
-    
-        if (config.onLoad) window.addEventListener('load', () => { register() });
-        else register()
-      }
-    }
-    
-    export const unregisterServiceWorker = () => {
-      navigator.serviceWorker.getRegistrations().then(function (registrations) {
-        if (!registrations.length) {
-          console.log('No serviceWorker registrations found.')
-          return
-        }
-        for (let registration of registrations) {
-          registration.unregister()
-        }
-      }).then(() => {
-        setTimeout(() => {
-          window.location.reload()
-        }, 100);
-      })
-    }
+    https://github.com/lenn0n/devGuide/blob/master/frontend/hooks/useWorkbox/useWorkbox.ts
 
 ### Finally, insert this in your index.tsx file
 
@@ -233,24 +171,21 @@ We will be using *workbox-window* and *workbox-precaching*.
     
     ...
     
-    
     root.render(
-      <App>
-        <div id="pwa-waiting-banner" className='hidden p-1 bg-slate-900 md:bg-opacity-40 text-center w-[100vw] absolute top-0 left-0 '>
-          <div className="flex items-center justify-center">
-            <div>Looks like you are viewing <span className='text-red-400'>outdated</span> version of my portfolio.
-            <span className='underline mx-1 text-yellow-500' role='button' onClick={unregisterServiceWorker}>Click here</span>to reload the page.
-            </div>
-          </div>
-        </div>
-      </App>
+      <App/>
     )
+    
+    ...
     
     registerServiceWorker({
       onLoad: true,
       successMessage: "Great! Service worker for caching has been enabled.",
       path: "/service-worker.js",
       actionForWaitingState: () => {
+        // Something to show upon waiting state
         document.getElementById("pwa-waiting-banner")?.classList.remove("hidden")
+      },
+      actionForControllingState: () => { 
+        window.location.reload()
       }
     })
