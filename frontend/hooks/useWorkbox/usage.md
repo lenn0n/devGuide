@@ -1,3 +1,7 @@
+#### Installation
+
+    npm i workbox-window
+
 #### Usage
 
     import { registerServiceWorker, unregisterServiceWorker } from '@hooks/useWorkbox';
