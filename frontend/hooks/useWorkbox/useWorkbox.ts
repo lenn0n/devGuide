@@ -5,7 +5,8 @@ type ConfigProps = {
   onLoad: boolean,
   successMessage?: string,
   errorMessage?: string,
-  actionForWaitingState?: Function
+  actionForWaitingState?: Function,
+  actionForControllingState?: Function
 }
 export const registerServiceWorker = (config: ConfigProps) => {
   if ('serviceWorker' in navigator) {
@@ -33,8 +34,15 @@ export const registerServiceWorker = (config: ConfigProps) => {
         });
       });
 
+      wb.addEventListener('controlling', event => {
+        // This will only trigger if there is newly installed service worker.
+        if (typeof config.actionForControllingState === 'function') {
+          config.actionForControllingState()
+        }
+      });
+
       wb.addEventListener('waiting', event => {
-        wb.messageSkipWaiting();
+        // This will only trigger if self.SkipWaiting is not declared in your service worker.
         if (typeof config.actionForWaitingState === 'function') {
           config.actionForWaitingState()
         }
@@ -55,8 +63,8 @@ export const registerServiceWorker = (config: ConfigProps) => {
   }
 }
 
-export const unregisterServiceWorker = () => {
-  navigator.serviceWorker.getRegistrations().then(function (registrations) {
+export const unregisterServiceWorker = async () => {
+  return navigator.serviceWorker.getRegistrations().then(function (registrations) {
     if (!registrations.length) {
       console.log('No serviceWorker registrations found.')
       return
@@ -64,9 +72,5 @@ export const unregisterServiceWorker = () => {
     for (let registration of registrations) {
       registration.unregister()
     }
-  }).then(() => {
-    setTimeout(() => {
-      window.location.reload()
-    }, 100);
   })
 }
