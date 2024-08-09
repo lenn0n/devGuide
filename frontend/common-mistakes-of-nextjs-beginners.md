@@ -35,7 +35,7 @@ You can mix these two by passing only as Props or Children.
 The only reason behind is apparently nextjs is expecting server components only and got imported by one client component. Don't import the component and use them as props/children to avoid errors.
 
 Alternatively, you can use dynamic import. 
-  >     dynamic(()=> import('...'));
+  >     const Agents = dynamic(()=> import('@/components/...'), { ssr: false });
 
 You might get some **Hydration Issues** while rendering components. This is simply because the Server Side and Client Side
 **should be the same**. Eg: You use new Date() inside the client component, in the server the value is 00-0000-00 01:00:01 and the client, 00-0000-00 01:00:02. This would throw an error.
@@ -104,3 +104,29 @@ By using this, you must know:
 /layout.tsx - does NOT change and re-render
 
 /template.tsx - does change and re-render
+
+
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Using CSS Module
+You can add specific style for each component using builtin css module. Create style in the current folder: "./name.module.css"
+
+    import styles from "./name.module.css"
+    ...
+    <div={styles.container}
+
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Allowing External Images as SRC
+
+Open next.config.js and add the following:
+    
+    const nextConfig = {
+        images: {
+            remotePatterns: [
+                {
+                    protocol: 'https',
+                    hostname: "any.com",
+                }
+            ]
+        }
+    }
+
+
+
