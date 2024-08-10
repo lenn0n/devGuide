@@ -74,3 +74,5 @@ Framework is a supporting structure or a guide for building application.
 
 **TreeShaking** - is an approach of optimizing bundles, removing unwanted codes, white spaces that significantly improves overall web performance.
 
+**rem vs. em** - em is a unit in css that represents the font size of the parent element. For example, you have a div element with font-size: 10px, the child will inherit it and if you set 2em, it will double the font size to 20px. (1em * parent font size). While on the other hand, rem is a root em that pertains to HTML font size. This mean if you set 20px in the root html, it will be equivalent to 1rem, 2rem would be 40px font size. 
+
