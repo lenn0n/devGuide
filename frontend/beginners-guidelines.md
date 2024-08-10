@@ -64,3 +64,13 @@ Framework is a supporting structure or a guide for building application.
 
 **React Lifecycle** - In react, there is two components that uses different Lifecycle method. In class-based component, they have componentDidMount, c...DidUnmount, c...willMount and c...willUnmount. In function-based component, there are two: useEffect and useLayoutEffect.
 
+**REST and GrapQL** - the difference between these two are, in REST API, it can have multiple endpoints and uses HTTP methods like, POST, GET, PUT, PULL and DELETE. In GraphQL, they have Query and Mutations and uses only one endpoint for the entire application.
+
+**Library vs. Framework** - there are a group of pre-written codes. A library is function that you call inside your app. ReactJS is one of the popular libraries. While on the other hand, framework is a scaffold and wraps your entire application to make your development easier.
+
+**ECMAScript vs. Javascript** - the only difference between these two is, the ECMAScript is the Standard or Spec of the web and Javascript is the implementation of that spec.
+
+**Require vs. Import** - require is commonjs or known as ES5 while on the other hand, import is an ES6.
+
+**TreeShaking** - is an approach of optimizing bundles, removing unwanted codes, white spaces that significantly improves overall web performance.
+
