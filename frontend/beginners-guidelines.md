@@ -55,3 +55,12 @@ Framework is a supporting structure or a guide for building application.
 10. Version Control
 11. Testing
 12. Tools and Libraries
+
+## ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Others
+
+**Idempotent API** - idempotent is an HTTP approach that a single request can have same effect with multiple requests.
+
+**DOM vs. Virtual DOM** - DOM or Document Object Model is a representation of content or structure in the web. On the other side, VDOM is an abstraction of the DOM. Its more like a blueprint of DOM. React uses VDOM to update the DOM efficiently.
+
+**React Lifecycle** - In react, there is two components that uses different Lifecycle method. In class-based component, they have componentDidMount, c...DidUnmount, c...willMount and c...willUnmount. In function-based component, there are two: useEffect and useLayoutEffect.
+
