@@ -60,17 +60,17 @@ Framework is a supporting structure or a guide for building application.
 
 **Idempotent API** - idempotent is an HTTP approach that a single request can have same effect with multiple requests.
 
-**DOM vs. Virtual DOM** - DOM or Document Object Model is a representation of content or structure in the web. On the other side, VDOM is an abstraction of the DOM. Its more like a blueprint of DOM. React uses VDOM to update the DOM efficiently.
+**DOM vs. Virtual DOM** - DOM or Document Object Model is a representation of content or structure in the web. On the other side, **VDOM** is an abstraction of the DOM. Its more like a blueprint of DOM. React uses VDOM to update the DOM efficiently.
 
-**React Lifecycle** - In react, there is two components that uses different Lifecycle method. In class-based component, they have componentDidMount, c...DidUnmount, c...willMount and c...willUnmount. In function-based component, there are two: useEffect and useLayoutEffect.
+**React Lifecycle** - In react, there is two components that uses different Lifecycle method. In **class-based** component, they have componentDidMount, c...DidUnmount, c...willMount and c...willUnmount. In **function-based** component, there are two: useEffect and useLayoutEffect.
 
-**REST and GrapQL** - the difference between these two are, in REST API, it can have multiple endpoints and uses HTTP methods like, POST, GET, PUT, PULL and DELETE. In GraphQL, they have Query and Mutations and uses only one endpoint for the entire application.
+**REST and GrapQL** - the difference between these two are, in **REST** API, it can have multiple endpoints and uses HTTP methods like, POST, GET, PUT, PULL and DELETE. In **GraphQL**, they have Query and Mutations and uses only one endpoint for the entire application.
 
-**Library vs. Framework** - these are a group of pre-written codes. A library is function that you call inside your app. ReactJS is one of the popular libraries. While on the other hand, framework is a scaffold and wraps your entire application to make your development easier.
+**Library vs. Framework** - these are a group of pre-written codes. A **library** is a function that you call inside your app. ReactJS is one of the popular jss libraries. While on the other hand, **framework** is a scaffold and wraps your entire application to make your development easier.
 
-**ECMAScript vs. Javascript** - the only difference between these two is, the ECMAScript is the Standard or Spec of the web and Javascript is the implementation of that spec.
+**ECMAScript vs. Javascript** - the only difference between these two is, the **ECMAScript** is the Standard or Spec of the web and **Javascript** is the implementation of that spec.
 
-**Require vs. Import** - require is commonjs or known as ES5 while on the other hand, import is an ES6.
+**Require vs. Import** - require is **commonjs or known as ES5** while on the other hand, import is an **ES6**.
 
 **TreeShaking** - is an approach of optimizing bundles, removing unwanted codes, white spaces that significantly improves overall web performance.
 
