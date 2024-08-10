@@ -62,7 +62,7 @@ Framework is a supporting structure or a guide for building application.
 
 **DOM vs. Virtual DOM** - DOM or Document Object Model is a representation of content or structure in the web. On the other side, **VDOM** is an abstraction of the DOM. Its more like a blueprint of DOM. React uses VDOM to update the DOM efficiently.
 
-**React Lifecycle** - In react, there is two components that uses different Lifecycle method. In **class-based** component, they have componentDidMount, c...DidUnmount, c...willMount and c...willUnmount. In **function-based** component, there are two: useEffect and useLayoutEffect.
+**React Lifecycle** - In react, there are two components that uses different Lifecycle method. In **class-based** component, they have componentDidMount, c...DidUnmount, c...willMount and c...willUnmount. In **function-based** component, there are two: useEffect and useLayoutEffect.
 
 **REST and GrapQL** - the difference between these two are, in **REST** API, it can have multiple endpoints and uses HTTP methods like, POST, GET, PUT, PULL and DELETE. In **GraphQL**, they have Query and Mutations and uses only one endpoint for the entire application.
 
@@ -74,5 +74,5 @@ Framework is a supporting structure or a guide for building application.
 
 **TreeShaking** - is an approach of optimizing bundles, removing unwanted codes, white spaces that significantly improves overall web performance.
 
-**rem vs. em** - em is a unit in css that represents the font size of the parent element. For example, you have a div element with font-size: 10px, the child will inherit it and if you set 2em, it will double the font size to 20px. (1em * parent font size). While on the other hand, rem is a root em that pertains to HTML font size. This mean if you set 20px in the root html, it will be equivalent to 1rem, 2rem would be 40px font size. 
+**rem vs. em** - em is a unit in css that represents the font size of the parent element. For example, you have a div element with font-size: 10px, the child will inherit it and if you set 2em, it will double the font size to 20px. (1em * parent font size). While rem is a root em that pertains to HTML font size. This mean if you set 20px in the root html, it will be equivalent to 1rem, 2rem would be 40px font size. 
 
