@@ -89,8 +89,8 @@ export const Modal = ({ children, props, handleClose }: ModalComponentProps) => 
     lg: 'lg:max-w-lg lg:w-full m-3 lg:mx-auto',
     xl: 'xl:max-w-4xl xl:w-full m-3 xl:mx-auto',
   }
-  const wrapperClassName = `size-full fixed ${props.showModal ? 'z-[80]' : 'z-0'}
-    overflow-x-hidden overflow-y-auto pointer-events-none`
+  const wrapperClassName = `size-full fixed ${props.showModal ? 'z-[80]' : 'z-0 transition-all'}
+    duration-300 ease-out overflow-x-hidden overflow-y-auto pointer-events-none`
 
   const contentClassName = `${props.showModal ? 'mt-7 opacity-100' : 'mt-0 opacity-0'} duration-300 p-5 ease-out 
       transition-all ${modalSize[props.size ?? 'sm']} min-h-[calc(100%-3.5rem)] flex items-center`
@@ -121,7 +121,7 @@ export const Modal = ({ children, props, handleClose }: ModalComponentProps) => 
       <aside onTransitionEnd={handleTransitionEvents} className={contentClassName}>
         <div className={`w-full flex flex-col shadow-sm rounded-xl pointer-events-auto  ${props.className}`}>
           <div className={`justify-between items-center py-3 px-4 border-b ${props.headerClassName} ${props.hideHeader ? 'hidden' : 'flex'}`}>
-            <h3 className="text-[20px]">
+            <h3 className="">
               {props.title}
             </h3>
             <button
