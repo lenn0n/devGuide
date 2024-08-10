@@ -66,7 +66,7 @@ Framework is a supporting structure or a guide for building application.
 
 **REST and GrapQL** - the difference between these two are, in REST API, it can have multiple endpoints and uses HTTP methods like, POST, GET, PUT, PULL and DELETE. In GraphQL, they have Query and Mutations and uses only one endpoint for the entire application.
 
-**Library vs. Framework** - there are a group of pre-written codes. A library is function that you call inside your app. ReactJS is one of the popular libraries. While on the other hand, framework is a scaffold and wraps your entire application to make your development easier.
+**Library vs. Framework** - these are a group of pre-written codes. A library is function that you call inside your app. ReactJS is one of the popular libraries. While on the other hand, framework is a scaffold and wraps your entire application to make your development easier.
 
 **ECMAScript vs. Javascript** - the only difference between these two is, the ECMAScript is the Standard or Spec of the web and Javascript is the implementation of that spec.
 
