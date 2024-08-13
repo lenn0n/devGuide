@@ -129,4 +129,34 @@ Open next.config.js and add the following:
     }
 
 
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) URL, Navigation, Search Params
+We can get params in the address using next/navigation.
 
+    import { usePathname, useRouter, useSearchParams } from "next/navigation"
+    
+    ...
+    
+    const router = useRouter()
+    const pathname = usePathname()
+    const searchParams = useSearchParams()
+    
+    ...
+    // Eg: https://abc.com/posts?name=John
+    const name = searchParams.get("name"); // John
+    const path = pathname; // /posts
+    router.forward() // forward history
+    router.back() // backward history
+
+
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Prefetching is default in NextJS whenever you use Link from next/link
+To disable this behavior, add prefetch as false
+    
+    import Link from "next/link";
+    
+    ...
+    
+    <Link href="/" prefetch={false}>Click here</Link>
+
+
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Sharing state from CLIENT to SERVER components
+It is possible to share client component state to a server component using router. **You just have to update the URL with router.replace and include your search query, then read the query in your server component.**
