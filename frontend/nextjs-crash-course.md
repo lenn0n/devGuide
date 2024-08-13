@@ -174,3 +174,17 @@ To remove caching of requests, use:
 To remove in a specific time,
 
     await fetch(URL, { next: { revalidate: SECONDS } }
+
+
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) SSR/SSG Components
+The App Router and Pages Router has different syntax for each component you create. Let's start with Pages Router:
+
+The only to declare server component in Pages Router is to export getServerSideProps and always return an object prop.
+
+    export const getServerSideProps = async () => {
+        // Perform some async actions here...
+        return { props: {} }
+    }
+
+For SSG, just 
+
