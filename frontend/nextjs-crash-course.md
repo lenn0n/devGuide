@@ -160,3 +160,17 @@ To disable this behavior, add prefetch as false
 
 ### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Sharing state from CLIENT to SERVER components
 It is possible to share client component state to a server component using router. **You just have to update the URL with router.replace and include your search query, then read the query in your server component.**
+
+
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Caching Requests using Fetch in NextJS:
+By default, using Fetch API caches the requests:
+
+    await fetch(URL, { cache: 'force-cache' }
+
+To remove caching of requests, use:
+
+    await fetch(URL, { cache: 'no-store' }
+
+To remove in a specific time,
+
+    await fetch(URL, { next: { revalidate: SECONDS } }
