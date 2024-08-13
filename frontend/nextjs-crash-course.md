@@ -186,5 +186,20 @@ The only to declare server component in Pages Router is to export getServerSideP
         return { props: {} }
     }
 
-For SSG, just 
+For SSG, this will only execute once in the build process. This is not advisable if you have a content that changes frequently.
 
+    export const getStaticProps = () => {
+        // Perform some async actions here...
+        return { props: {} }
+    }
+
+
+Perfect! That's covered all we need in Pages Router (old). Now let's see how it will be achieved in App Router.
+
+By default, server components are default in App Router, you don't need to do anything just export your function and you are good to go.
+
+If you are then using hooks in your component, it wont work unless you remind nextjs that 'hey, this is a client component'. To achieve this, simply add:
+
+    'use client';
+
+At the top of your file. Simple as that! 
