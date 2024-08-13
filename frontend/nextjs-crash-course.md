@@ -177,9 +177,9 @@ To remove in a specific time,
 
 
 ### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) SSR/SSG Components
-The App Router and Pages Router has different syntax for each component you create. Let's start with Pages Router:
+The App Router and Pages Router have different syntax when you declare a component.
 
-The only to declare server component in Pages Router is to export getServerSideProps and always return an object prop.
+Let's start with Pages Router, The only to declare server component in Pages Router is to export getServerSideProps and always return an object prop.
 
     export const getServerSideProps = async () => {
         // Perform some async actions here...
@@ -194,12 +194,12 @@ For SSG, this will only execute once in the build process. This is not advisable
     }
 
 
-Perfect! That's covered all we need in Pages Router (old). Now let's see how it will be achieved in App Router.
-
-By default, server components are default in App Router, you don't need to do anything just export your function and you are good to go.
+Perfect! That's covered all we need in Pages Router (old). Now let's see how it will be achieved in App Router. By default, server components are default in App Router, you don't need to do anything just export your function and you are good to go.
 
 If you are then using hooks in your component, it wont work unless you remind nextjs that 'hey, this is a client component'. To achieve this, simply add:
 
     'use client';
 
-At the top of your file. Simple as that! 
+at the top of your file. Simple as that! Please do remember that you can access all the PROPS returned from getServerSideProps and getStaticProps to your main JSX file. .. ( { name } ) => ...
+
+
