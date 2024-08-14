@@ -1,1 +1,1 @@
-This custom hook was created on top of Fetch API. The goal is to simplified the HTTP call in GraphQL and REST API by using Browser APIS and Props. Please check the comments I added inside and feel free to tweak.
+This custom hook was created on top of Fetch API. The goal is to simplify the HTTP call in GraphQL and REST API by using Browser APIS and Props. Please check the comments I added inside and feel free to tweak.
