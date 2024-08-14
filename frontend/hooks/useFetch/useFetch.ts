@@ -7,31 +7,32 @@ type HookProps = {
 
 const fetchUserToken = () => {
   // Create your own token retriever
-  return ""
+  return "eyJhbGciOiJIUzI1G6VEwHGBzgsEiaH1je2j9KZuZyr6VSgGxEyH54br9tU"
 }
 
 const useFetch = (config: HookProps) => {
   const request = async (query: any) => {
-    let url = config.url, body = query;
+    let url = config.url, body = query, method = config.method
 
     if (config.isGraphQL) {
-      body = JSON.stringify({ query })
+      body = { query }
+      method = 'POST'
     } else {
       switch (config.method) {
         case 'GET':
         case 'DELETE':
-          url +=  "?" + objectToUrlParams(query)
+          url += "?" + objectToUrlParams(query)
           body = undefined
-        break;
+          break;
         default:
           break;
       }
     }
 
     return await fetch(url ?? '', {
-      method: config.method,
+      method,
       cache: config?.cache,
-      body: JSON.stringify(body),
+      body: body ? JSON.stringify(body) : undefined,
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${fetchUserToken()}`
@@ -40,20 +41,22 @@ const useFetch = (config: HookProps) => {
       .then((data) => data.json())
       .then((data) => {
         if (data.errors || data.message || data.errors?.[0]?.['message']) {
-          return {
-            props: {
-              error: true,
-              message: data.message || data.errors?.[0]?.['message']
-            }
+          return { 
+            error: true,
+            message: data.message || data.errors?.[0]?.['message'] || 'Unable to display error message.'
           }
         }
-        return { props: { ...data } }
+        return {
+          error: false,
+          // Expected to return 'data' key as Array Objects
+          // GraphQL and REST may have different responses
+          // TODO: Always debug this part to get the exact values you want.
+          data: config.isGraphQL ? [...data.data.clients] : data
+        }
       }).catch((err) => {
         return {
-          props: {
-            error: true,
-            message: "Unknown Error. Please check your internet connection."
-          }
+          error: true,
+          message: `Unknown Error. Please check your internet connection. REF:${String(err)}`
         }
       })
   }
