@@ -12,7 +12,7 @@
 <p align="center">
 <img src="https://media.tenor.com/i_xA8NkMy4kAAAAi/honkai-star-rail-hsr.gif" width="300" height="300" border="10"/>
 </p>
-<p align="center">Hi! Thank you for viewing! Please leave a star if you find this helpful. </p>
+<p align="center">Hi! Thanks for viewing! Please leave a star if you find this helpful. </p>
 
 
 
