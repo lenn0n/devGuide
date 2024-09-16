@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'SocatAgent' }
+    agent { label 'node-agent' }
     stages {
         stage('build') {
             steps {
