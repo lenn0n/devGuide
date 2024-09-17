@@ -1,8 +1,11 @@
 ## JENKINS TUTORIAL
 Jenkins is an automation tool that automates the task of the developers. It's free to use and you can host it in your machine. 
 
-###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Setup a machine instance in any cloud providers
+###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Setup Externally
 Go and spin up a virtual machine in any cloud providers you use. Once created, install the jenkins by following the storybook created by the official team of jenkins.
+
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Setup Locally
+Download and install Docker and JDK.
 
 ###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Installation
 
