@@ -10,11 +10,11 @@ Go and spin up a virtual machine in any cloud providers you use. Once created, i
 
     https://www.jenkins.io/doc/book/installing/linux/
 
-> Install in Docker
+> Install in Docker:
 
     https://www.jenkins.io/doc/book/installing/docker/
 
-If you want to run node inside of jenkins, add this line inside the Dockerfile of jenkins container. You can also do this in Linux, just remove the RUN command.
+If you want to run node inside the jenkins controller, add this line in the Dockerfile of jenkins docker container. You can also do this in Linux, just remove the RUN command.
 
     RUN apt-get install -y nodejs
 
