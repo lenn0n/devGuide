@@ -33,3 +33,42 @@ Once the Jenkins successfully installed, run it and they will ask a password to 
 
     docker exec -it CONTAINER_ID bash
 
+
+Sample Groovy Script
+
+    pipeline {
+        agent any
+
+        stages {
+            stage("Compile and Test") {
+                steps {
+                    git 'https://github.com/....git'
+                    bat "command_here"
+                }
+            }
+
+            stage("Create Docker Image") {
+                steps {
+                    sh 'docker build'
+                }
+            }
+
+            stage("Deploy to Dockerhub") {
+              steps {
+                script {
+                    withCredentials ([
+                        usernamePassword(credentialsId: docker-cred-name,
+                        usernameVariable: "USERNAME",
+                        passwordVariable: 'PASSWORD"
+                    )]) {
+                        sh 'docker login --username $USERNAME -- password PASSWORD'
+                    } 
+                }
+              } 
+            }
+              
+            
+        }
+
+    }
+
