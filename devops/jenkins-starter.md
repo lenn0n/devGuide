@@ -52,6 +52,9 @@ In Jenkins, select New Item under Dashboard > at the top left.
 
  - Select Save at the end of the page. You’re now ready to create a Jenkinsfile to check into your locally cloned Git repository.
 
+ - Make sure your repository has a 'Jenkinsfile' inside. Otherwise, no pipeline will be executed.
+
+
 ###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Sample Groovy Script
 
     pipeline {
