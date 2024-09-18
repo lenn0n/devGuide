@@ -83,12 +83,14 @@ In Jenkins, select New Item under Dashboard > at the top left.
 ###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Using of Plugins
 If you want to run node using plugin, then goto Manage Jenkins > Plugins > Select any Plugin you want
 
-Let's say you picked NodeJS. Install it.
+Let's say you select NodeJS. Install it.
 
-Once the installation is completed, proceed to enabling that plugin inside of our jenkins.
+Once the installation is completed, you have to enable that plugin in your Jenkins config.
 - http://localhost:8080/manage/configureTools/
 
-Scroll down and select NodeJS. To use the plugin in your pipeline, wrap inside of nodejs. Eg:
+Scroll down and select NodeJS. Select any version and click save.
+
+Usage:
 
     stage('Build the Application') {
       steps {
