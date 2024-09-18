@@ -24,7 +24,7 @@ It depends what architecture you will use. If you want to stick with VMs, choose
 
     https://www.jenkins.io/doc/book/installing/kubernetes/
 
-If you want to run node inside the jenkins controller, add this line in the Dockerfile of jenkins docker container that is given above. You can also do this in Linux, just remove the RUN command and install it.
+If you want to run node inside the jenkins controller without plugin, add this line in the Dockerfile of jenkins docker container that is given above. You can also do this in Linux, just remove the RUN command and install it.
 
     RUN apt-get install -y nodejs
 
@@ -80,17 +80,40 @@ In Jenkins, select New Item under Dashboard > at the top left.
  - Make sure your repository has a 'Jenkinsfile' inside. Otherwise, no pipeline will be executed.
 
 
+###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Using of Plugins
+If you want to run node using plugin, then goto Manage Jenkins > Plugins > Select any Plugin you want
+
+Let's say you picked NodeJS. Install it.
+
+Once the installation is completed, proceed to enabling that plugin inside of our jenkins.
+- http://localhost:8080/manage/configureTools/
+
+Scroll down and select NodeJS. To use the plugin in your pipeline, wrap inside of nodejs. Eg:
+
+    stage('Build the Application') {
+      steps {
+        nodejs(nodeJSInstallationName: 'nodejs') {
+            sh 'npm install'
+            sh 'npm run build'
+        }
+    
+      }
+    }
+
 ###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Sample Groovy Script
 
     pipeline {
         agent any
 
         stages {
-            stage("Compile and Test") {
-                steps {
-                    git 'https://github.com/....git'
-                    bat "command_here"
+             stage('Build the Application') {
+             steps {
+                nodejs(nodeJSInstallationName: 'nodejs') {
+                    sh 'npm install'
+                    sh 'npm run build'
                 }
+         
+              }
             }
 
             stage("Create Docker Image") {
@@ -147,3 +170,5 @@ Syntax: (Minute Hour DOM Month DOW)
 > DAYWEEK: Day of the week (0-7) where 0 and 7 are sunday
 
 Example: H/2 * * * * (schedule your build for every 2 minutes)
+
+
