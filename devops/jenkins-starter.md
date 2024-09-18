@@ -33,8 +33,26 @@ Once the Jenkins successfully installed, run it and they will ask a password to 
 
     docker exec -it CONTAINER_ID bash
 
+###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Create your Pipeline project in Jenkins
+In Jenkins, select New Item under Dashboard > at the top left.
 
-Sample Groovy Script
+ - Enter your new Pipeline project name, such as simple-node-js-react-npm-app, in Enter an item name.
+
+ - Scroll down if necessary and select Pipeline, then select OK at the end of the page.
+
+ - (Optional) Enter a Pipeline Description.
+
+ - Select Pipeline on the left pane.
+
+ - Select Definition and then choose the Pipeline script from SCM option. This option instructs Jenkins to obtain your Pipeline from the source control management (SCM), which is your forked Git repository.
+
+ - Choose Git from the options in SCM.
+
+ - Enter the URL of your repository in Repositories/Repository URL. This URL can be found when selecting the green Code button in the main page of your GitHub repo.
+
+ - Select Save at the end of the page. You’re now ready to create a Jenkinsfile to check into your locally cloned Git repository.
+
+###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Sample Groovy Script
 
     pipeline {
         agent any
@@ -71,4 +89,13 @@ Sample Groovy Script
         }
 
     }
+
+###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Jenkins Useful Plugins
+These are the plugins I found useful if you are developing web applications like I do. 
+
+> Kubernetes CLI Plugin
+
+    https://plugins.jenkins.io/kubernetes-cli/
+
+
 
