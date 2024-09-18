@@ -33,6 +33,31 @@ Once the Jenkins successfully installed, run it and they will ask a password to 
 
     docker exec -it CONTAINER_ID bash
 
+
+###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Pipeline Concepts
+The below fundamentals are common to both, scripted and declarative pipeline:
+
+- **Pipeline**: A user-defined block which contains all the stages. It is a key part of declarative pipeline syntax.
+- **Node**: A node is a machine that executes an entire workflow. It is a key part of the scripted pipeline syntax.
+- **Agent**: instructs Jenkins to allocate an executor for the builds. It is defined for an entire pipeline or a specific stage.
+
+
+Scripted pipeline
+Code is written on the Jenkins UI instance and is enclosed within the node block.
+
+    node {
+          scripted pipeline code
+    }
+
+
+Declarative pipeline
+Code is written locally in a file and is checked into a SCM and is enclosed within the pipeline block.
+
+    pipeline {
+          declarative pipeline code
+    }
+
+
 ###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Create your Pipeline project in Jenkins
 In Jenkins, select New Item under Dashboard > at the top left.
 
