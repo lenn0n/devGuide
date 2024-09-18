@@ -126,4 +126,24 @@ These are the plugins I found useful if you are developing web applications like
     https://plugins.jenkins.io/kubernetes-cli/
 
 
+###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Start, stop and restart Jenkins
+    sudo service jenkins restart
+    sudo service jenkins stop
+    sudo service jenkins start
 
+###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Schedule a build periodically
+Jenkins uses Cron expressions to schedule a job. Each line consists of 5 fields separated by TAB or whitespace:
+
+Syntax: (Minute Hour DOM Month DOW)
+
+> MINUTE: Minutes in one hour (0-59)
+
+> HOURS: Hours in one day (0-23)
+
+> DAYMONTH: Day in a month (1-31)
+
+> MONTH: Month in a year (1-12)
+
+> DAYWEEK: Day of the week (0-7) where 0 and 7 are sunday
+
+Example: H/2 * * * * (schedule your build for every 2 minutes)
