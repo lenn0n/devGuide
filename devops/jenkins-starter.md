@@ -1,7 +1,7 @@
 
 ![#c5f015](https://www.jenkins.io/images/post-images/2023/01/12/jenkins-newsletter/infrastructure.png) 
 ## JENKINS 101 ( Simplified )
-Jenkins is an automation tool that automates the task of every developer. It's free to use and you can host it in your own machine. 
+Jenkins is an automation tool that automates the tasks of every developer. It's free to use and you can host it in your own machine. 
 
 ###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Setup Externally
 Go and spin up a virtual machine in any cloud providers you use. Once created, install the jenkins by following the storybook created by the official team of jenkins.
@@ -81,14 +81,15 @@ In Jenkins, select New Item under Dashboard > at the top left.
 
 
 ###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Using of Plugins
-If you want to run node using plugin, then goto Manage Jenkins > Plugins > Select any Plugin you want
+Plugins are a way to extend the functionality of Jenkins, an open-source platform for CI/CD and deployment. There are over a thousand different plugins which can be installed on a Jenkins controller and to integrate various build tools, cloud providers, analysis tools, and much more.
+> Dashboard > Manage Jenkins > Plugins > Available Plugins
 
-Let's say you select NodeJS. Install it.
+For example, you need to use NodeJS to perform some actions like npm run build, node index.js, go download it from above step.
 
 Once the installation is completed, you have to enable that plugin in your Jenkins config.
-- http://localhost:8080/manage/configureTools/
+> Dashboard > Manage Jenkins > Tools
 
-Scroll down and select NodeJS. Select any version and click save.
+Find the NodeJS settings by scrolling down the page. Add and save the config.
 
 Usage:
 
