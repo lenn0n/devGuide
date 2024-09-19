@@ -107,73 +107,82 @@ Usage:
 
 ###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Example of Declarative Pipeline
 The steps behind this pipeline are the following: 
-- Install the node dependencies
-- Build the application
-- Assign default email and name for GIT
-- Push to Github
-- Build Docker Image
-- Push to DockerHub
+- Test the Application
+- Build the Application
+- Dockerize Application
+- Push To DockerHub
+- Build Image
+- Push To Github (Clone build to other repo)
 
 You have to install NodeJS plugin if you follow along this pipeline.
 
-
-      pipeline {
-        agent any
-
-        stages {
-            stage('Build the Application') {
-             steps {
-                nodejs(nodeJSInstallationName: 'nodejs') {
-                    sh 'npm install'
-                    sh 'npm run build'
-                }
-         
-              }
+    pipeline {
+      agent any
+    
+      stages {
+        stage("Test Application"){
+          steps {
+            nodejs(nodeJSInstallationName: 'nodejs') {
+              sh 'npm run test'
             }
-
-          stage('Assign global email and name'){
-                steps {
-                  sh 'git config --global user.email "auto@jenkins.com"'
-                  sh 'git config --global user.name "Jenkins"'
-                }
-           }
-           
-           stage('Push to Github') {
-              steps {
-                sh 'touch something_new.txt'
-                sh 'git add .'
-                sh "git commit -m 'Commit from Jenkins'"
-                withCredentials([gitUsernamePassword(credentialsId: 'gh-cred', gitToolName: 'Default')]) {
-                    sh "git push -u origin HEAD:master"
-                }
-              }
-            }
-
-            stage("Create Docker Image") {
-                steps {
-                    sh 'docker build'
-                }
-            }
-
-            stage("Deploy to Dockerhub") {
-              steps {
-                script {
-                    withCredentials ([
-                        usernamePassword(credentialsId: docker-cred-name,
-                        usernameVariable: "USERNAME",
-                        passwordVariable: 'PASSWORD"
-                    )]) {
-                        sh 'docker login --username $USERNAME -- password PASSWORD'
-                    } 
-                }
-              } 
-            }
-              
-            
+          }
         }
-
+        stage("Build Application"){
+          steps {
+            nodejs(nodeJSInstallationName: 'nodejs') {
+              sh 'npm install'
+              sh 'npm run build'
+            }
+          }
+        }
+        stage("Dockerize Application"){
+          steps {
+              sh 'docker build . -t lennonjansuy/webapp:dev'
+              sh 'docker images'
+          }
+        }
+        stage("Push To DockerHub"){
+          steps {
+            withCredentials ([
+              usernamePassword(credentialsId: 'docker-cred',
+              usernameVariable: "USERNAME",
+              passwordVariable: "PASSWORD"
+            )]) {
+              sh 'docker login --username $USERNAME --password $PASSWORD'
+              sh 'docker push lennonjansuy/webapp:dev'
+            } 
+          }
+        }
+        stage("Push To Github (Clone build to other repo)"){
+          steps {
+            withCredentials([gitUsernamePassword(credentialsId: 'gh-cred', gitToolName: 'Default')]) {
+              git credentialsId: 'gh-cred', url: 'https://github.com/lenn0n/jenkins-post-build.git'
+              sh "echo 'node_modules' > .gitignore"
+              sh 'git add .'
+              sh "git commit -m 'Commit from Jenkins' || true"
+              sh "git push -u origin HEAD:master || true"
+            }
+          }
+        }
+        stage("Push To EC2"){
+          steps {
+            echo 'TBD'
+          }
+        }
+        stage("Restart Application (PM2, Deployments)"){
+          steps {
+            echo 'TBD'
+          }
+        }
+    
+      }
+      post {
+        always {
+          deleteDir()
+        }
+      }
+    
     }
-
   
 ###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Credentials
 
