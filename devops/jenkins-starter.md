@@ -114,7 +114,7 @@ The steps behind this pipeline are the following:
 - Build Docker Image
 - Push to DockerHub
 
-You have to install NodeJS plugin if you follow along this pipeline. The GIT and Docker 
+You have to install NodeJS plugin if you follow along this pipeline.
 
 
       pipeline {
