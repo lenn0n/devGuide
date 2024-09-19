@@ -151,6 +151,10 @@ These are the plugins I found useful if you are developing web applications like
 
     https://plugins.jenkins.io/kubernetes-cli/
 
+> NodeJS
+
+    https://plugins.jenkins.io/nodejs/
+
 
 ###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Start, stop and restart Jenkins
     sudo service jenkins restart
