@@ -80,6 +80,7 @@ In Jenkins, select New Item under Dashboard > at the top left.
  - Make sure your repository has a 'Jenkinsfile' inside. Otherwise, no pipeline will be executed.
 
 
+
 ###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Using of Plugins
 Plugins are a way to extend the functionality of Jenkins, an open-source platform for CI/CD and deployment. There are over a thousand different plugins which can be installed on a Jenkins controller and to integrate various build tools, cloud providers, analysis tools, and much more.
 > Dashboard > Manage Jenkins > Plugins > Available Plugins
@@ -103,8 +104,9 @@ Usage:
       }
     }
 
-###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Working example of Declarative Pipeline
-The steps behind this pipeline are: 
+
+###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Example of Declarative Pipeline
+The steps behind this pipeline are the following: 
 - Install the node dependencies
 - Build the application
 - Assign default email and name for GIT
@@ -112,8 +114,10 @@ The steps behind this pipeline are:
 - Build Docker Image
 - Push to DockerHub
 
+You have to install NodeJS plugin if you follow along this pipeline. The GIT and Docker 
 
-    pipeline {
+
+      pipeline {
         agent any
 
         stages {
@@ -170,6 +174,15 @@ The steps behind this pipeline are:
 
     }
 
+  
+###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Credentials
+
+The credentialsID **gh-cred** above was created using Username and Password Kind in:
+> Dashboard > Manage Jenkins > Credentials
+
+Click the System > Global Credentials and add new secret entry.
+
+
 ###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Jenkins Useful Plugins
 These are the plugins I found useful if you are developing web applications like I do. 
 
@@ -182,10 +195,12 @@ These are the plugins I found useful if you are developing web applications like
     https://plugins.jenkins.io/nodejs/
 
 
+
 ###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Start, stop and restart Jenkins
     sudo service jenkins restart
     sudo service jenkins stop
     sudo service jenkins start
+
 
 ###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Schedule a build periodically
 Jenkins uses Cron expressions to schedule a job. Each line consists of 5 fields separated by TAB or whitespace:
