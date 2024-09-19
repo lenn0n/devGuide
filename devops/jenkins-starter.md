@@ -103,7 +103,15 @@ Usage:
       }
     }
 
-###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Sample Groovy Script
+###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Working example of Declarative Pipeline
+The steps behind this pipeline are: 
+- Install the node dependencies
+- Build the application
+- Assign default email and name for GIT
+- Push to Github
+- Build Docker Image
+- Push to DockerHub
+
 
     pipeline {
         agent any
