@@ -208,7 +208,7 @@ Example: H/2 * * * * (schedule your build for every 2 minutes)
 ###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Setup Agents
 We have to scale the built-in nodes to zero for security purposes. The agent will handle the builds from the controller (Jenkins Master).
 
-- Agent Setup in Windows
+## Agent Setup in Windows
   
 In order to run agent inside of our controller, we have to allow the ports in:
 > Manage Jenkins > Security > Agents > Set to FIXED: 50000 > Save
