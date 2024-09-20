@@ -7,16 +7,20 @@ Jenkins is an automation tool that automates the tasks of every developer. It's 
 Go and spin up a virtual machine in any cloud providers you use. Once created, install the jenkins by following the storybook created by the official team of jenkins.
 
 ### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Setup Locally
-Download and install Docker and JDK.
+You need to have Java installed in your machine. If you dont want to install JDK, you can use their docker container version. See the link below:
 
 ###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Installation
-It depends what architecture you will use. If you want to stick with VMs, choose Linux. Otherwise..
+It depends what architecture you will use. If you want to stick with working in virtual machines, choose Linux. 
+
+> Install in Windows:
+
+    https://www.jenkins.io/doc/book/installing/winndows/
 
 > Install in Linux:
 
     https://www.jenkins.io/doc/book/installing/linux/
 
-> Install in Docker:
+> Install in Docker (Recommended):
 
     https://www.jenkins.io/doc/book/installing/docker/
 
@@ -29,7 +33,8 @@ Once the Jenkins successfully installed, run it and they will ask a password to 
 
     docker exec -it CONTAINER_ID bash
 
-If you want to run NodeJS inside of the jenkins controller, select Custom selections upon initial setup, find NodeJS in build tools selection and install it. 
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) NodeJS Plugin
+NodeJS is not installed by default. If you want to perform some node operations inside of your controller/container/node, select Custom selections upon initial setup, find NodeJS in build tools selection and install it. 
 Finally, update the tool configuration for NodeJS:
 > Dashboard > Manage Jenkins > NodeJS Installations > Add NodeJS
 
