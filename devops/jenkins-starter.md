@@ -205,3 +205,28 @@ Syntax: (Minute Hour DOM Month DOW)
 Example: H/2 * * * * (schedule your build for every 2 minutes)
 
 
+###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Setup Agents
+We have to scale the built-in nodes to zero for security purposes. The agent will handle the builds from the controller (Jenkins Master).
+
+- Agent Setup in Windows
+  
+In order to run agent inside of our controller, we have to allow the ports in:
+> Manage Jenkins > Security > Agents > Set to FIXED: 50000 > Save
+  
+Next, goto Manage Jenkins > Nodes > New Node. Provide agent name, select permanent agent and create.
+
+Specify the following:
+- Remote root directory : /home/jenkins/agent
+- Launch method : Launch agent by connecting to controller
+- Save it.
+
+Finally there will be a guide that you need to run in order to provision your agents. Just run it in your local or remote.
+You can also use the Launch method: SSH. Just create a key-pair in your machine and put it in the credentials.
+
+Now you have successfully created an agent, here's how you can use it:
+
+    pipeline {
+        agent {
+            label 'NAME_OF_YOUR_AGENT'
+        }
+    }
