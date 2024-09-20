@@ -217,11 +217,11 @@ Next, goto Manage Jenkins > Nodes > New Node. Provide agent name, select permane
 
 Specify the following:
 - Remote root directory : /home/jenkins/agent
-- 
+- Label : same as the agent name
 - Launch method : Launch agent by connecting to controller
 - Save it.
 
-Finally there will be a guide that you need to run in order to provision your agents. Just run it in your local or remote.
+The last step is there will be a guide that you need to run in order to provision your agents. Just run it in your local or remote.
 You can also use the Launch method: SSH. Just create a key-pair in your machine and put it in the credentials. 
 - Login to Virtual Machine
 - Generate key-pair: ssh-keygen
