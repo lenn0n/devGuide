@@ -24,14 +24,24 @@ It depends what architecture you will use. If you want to stick with VMs, choose
 
     https://www.jenkins.io/doc/book/installing/kubernetes/
 
-If you want to run node inside the jenkins controller without plugin, add this line in the Dockerfile of jenkins docker container that is given above. You can also do this in Linux, just remove the RUN command and install it.
-
-    RUN apt-get install -y nodejs
-
 Once the Jenkins successfully installed, run it and they will ask a password to unlock. There would be a guide where you can find it.
 > Snippet for going inside a container:
 
     docker exec -it CONTAINER_ID bash
+
+If you want to run NodeJS inside of the jenkins controller, select Custom selections upon initial setup, find NodeJS in build tools selection and install it. 
+Finally, update the tool configuration for NodeJS:
+> Dashboard > Manage Jenkins > NodeJS Installations > Add NodeJS
+
+Provide the name of the tool to be used, click 'Install automatically', select your desired version and save it. Here's how to use it inside your pipeline:
+
+     stage("Test Application"){
+      steps {
+        nodejs(nodeJSInstallationName: 'nodejs') { // 'nodejs' value should match the tool name you provided above step.
+          sh 'npm run test'
+        }
+      }
+    }
 
 
 ###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Pipeline Concepts
@@ -78,31 +88,6 @@ In Jenkins, select New Item under Dashboard > at the top left.
  - Select Save at the end of the page. You’re now ready to create a Jenkinsfile to check into your locally cloned Git repository.
 
  - Make sure your repository has a 'Jenkinsfile' inside. Otherwise, no pipeline will be executed.
-
-
-
-###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Using of Plugins
-Plugins are a way to extend the functionality of Jenkins, an open-source platform for CI/CD and deployment. There are over a thousand different plugins which can be installed on a Jenkins controller and to integrate various build tools, cloud providers, analysis tools, and much more.
-> Dashboard > Manage Jenkins > Plugins > Available Plugins
-
-For example, you need to use NodeJS to perform some actions like npm run build, node index.js, go download it from above step.
-
-Once the installation is completed, you have to enable that plugin in your Jenkins config.
-> Dashboard > Manage Jenkins > Tools
-
-Find the NodeJS settings by scrolling down the page. Add and save the config.
-
-Usage:
-
-    stage('Build the Application') {
-      steps {
-        nodejs(nodeJSInstallationName: 'nodejs') {
-            sh 'npm install'
-            sh 'npm run build'
-        }
-    
-      }
-    }
 
 
 ###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Example of Declarative Pipeline
@@ -184,26 +169,12 @@ You have to install NodeJS plugin if you follow along this pipeline.
     
     }
   
-###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Credentials
+###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) About Credentials
 
-The credentialsID **gh-cred** above was created using Username and Password Kind in:
+Create credentials to access tools that requires authentication.
 > Dashboard > Manage Jenkins > Credentials
 
 Click the System > Global Credentials and add new secret entry.
-
-
-###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Jenkins Useful Plugins
-These are the plugins I found useful if you are developing web applications like I do. 
-
-> Kubernetes CLI Plugin
-
-    https://plugins.jenkins.io/kubernetes-cli/
-
-> NodeJS
-
-    https://plugins.jenkins.io/nodejs/
-
-
 
 ###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Start, stop and restart Jenkins
     sudo service jenkins restart
