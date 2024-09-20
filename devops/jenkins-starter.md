@@ -205,10 +205,10 @@ Syntax: (Minute Hour DOM Month DOW)
 Example: H/2 * * * * (schedule your build for every 2 minutes)
 
 
-###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Setup Agents
+###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  About Built-in Nodes
 We have to scale the built-in nodes to zero for security purposes. The agent will handle the builds from the controller (Jenkins Master).
 
-## Agent Setup in Windows
+### Setting up Agent (Node)
   
 In order to run agent inside of our controller, we have to allow the ports in:
 > Manage Jenkins > Security > Agents > Set to FIXED: 50000 > Save
