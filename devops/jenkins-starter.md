@@ -208,7 +208,7 @@ Example: H/2 * * * * (schedule your build for every 2 minutes)
 ###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  About Built-in Nodes
 We have to scale the built-in nodes to zero for security purposes. The agent will handle the builds from the controller (Jenkins Master).
 
-### Setting up Agent (Node)
+### Setting up Agent (Controller)
   
 In order to run agent inside of our controller, we have to allow the ports in:
 > Manage Jenkins > Security > Agents > Set to FIXED: 50000 > Save
@@ -221,7 +221,9 @@ Specify the following:
 - Launch method : Launch agent by connecting to controller
 - Save it.
 
-The last step is there will be a guide that you need to run in order to provision your agents. Just run it in your local or remote.
+One last step is there will be a guide that you need to run in order to provision your agents. Just run it in your local or remote.
+
+### Setting up Agent (using SSH)
 You can also use the Launch method: SSH. Just create a key-pair in your machine and put it in the credentials. 
 - Login to Virtual Machine
 - Generate key-pair: ssh-keygen
@@ -230,6 +232,7 @@ You can also use the Launch method: SSH. Just create a key-pair in your machine 
 
 Paste the id_rsa.pub value at the Jenkins SSH credentials. For username, use the current one that created the key.
 
+### Agent Usage
 Now you have successfully created an agent, here's how you can use it:
 
     pipeline {
