@@ -104,10 +104,13 @@ The steps behind this pipeline are the following:
 - Build Image
 - Push To Github (Clone build to other repo)
 
-### NOTE: Watch out of 'bat' and 'sh' commands. The 'bat' command is for windows only while 'sh' is for linux machines.
 
-### NOTE: Pay attention of using single and double quotations. If you need to insert variables inside your command block, use double (").
 
+![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)  NOTE: Watch out of 'bat' and 'sh' commands. The 'bat' command is for windows only while 'sh' is for linux machines.
+
+![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)  NOTE: Pay attention of using single and double quotations. If you need to insert variables inside your command block, use double (").
+
+            
     pipeline {
       agent any
     
