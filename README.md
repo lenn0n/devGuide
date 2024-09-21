@@ -4,7 +4,7 @@
   - Face Swap, Face Enhancer NSFW
     
 📁 devGuide/devops
-  - CI/CD, Cloud EC2 ECS, NGINX, GitHub Actions, SSL Certs, Linux
+  - CI/CD, Cloud EC2 ECS, NGINX, GitHub Actions, SSL Certs, Linux, Jenkins
     
 📁 devGuide/frontend
   - React, NextJS, Express, TailwindCSS, Kubectl, Git, SASS, Vitest, RTL, Custom Hooks (React).
