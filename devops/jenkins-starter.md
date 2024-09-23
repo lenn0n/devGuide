@@ -1,5 +1,5 @@
 
-![#c5f015](https://www.jenkins.io/images/post-images/2023/01/12/jenkins-newsletter/infrastructure.png) 
+![#c5f015](https://raw.githubusercontent.com/lenn0n/devGuide/refs/heads/master/images/jenkins.png) 
 ## JENKINS 101 ( Simplified )
 Jenkins is an automation tool that automates the tasks of every developer. It's free to use and you can host it in your own machine. 
 
