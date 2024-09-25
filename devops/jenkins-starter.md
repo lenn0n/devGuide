@@ -245,3 +245,30 @@ Now you have successfully created an agent, here's how you can use it:
             label 'NAME_OF_YOUR_AGENT'
         }
     }
+
+###   ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)  Mailing (SMTP) using GMAIL
+We can send an email to notify the team that the build was successfully deployed. To do this, first:
+
+Goto your Google Account Settings and create an app password. Store the password given in your Jenkins credentials.
+> Google > Settings > Security > App Password
+
+After saving the credentials, goto:
+> Dashboard > Manage Jenkins > System > Extended E-mail Notification
+
+    SMTP: smtp.gmail.com
+    SMTP Port: 465
+    // Advance
+    Credentials: Create New if you have skipped the above steup [ Username & Password ] - Use your email address as Username, use the App Password as Password.
+    Use SSL: YES
+
+> Dashboard > Manage Jenkins > System > Email Notification
+
+    SMTP: smtp.gmail.com
+    // Advance
+    Use SMTP:  Use your email address as Username, use the App Password as Password.
+    Use SSL: YES
+    SMTP Port: 465
+
+Test configuration by sending test e-mail.
+
+    
