@@ -34,3 +34,9 @@ The following commands are commonly used in CI/CD.
 
 ###  ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) ALLOW NGINX HTTP
 >     sudo ufw allow 'Nginx HTTP'
+
+###  ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) FIND PROCESS ID
+>     sudo pgrep PROCESS_NAME
+
+###  ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) REMOVE PROCESS BY ID
+>     kill PROCESS_ID
