@@ -164,7 +164,7 @@ The steps behind this pipeline are the following:
             echo 'TBD'
           }
         }
-       stage("Send Email Notification"){
+        stage("Send Email Notification"){
           steps {
             withCredentials([string(credentialsId: 'email-recipient', variable: 'recipient')]) {
               emailext (
