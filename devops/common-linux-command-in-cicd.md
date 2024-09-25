@@ -40,3 +40,8 @@ The following commands are commonly used in CI/CD.
 
 ###  ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) REMOVE PROCESS BY ID
 >     kill PROCESS_ID
+
+###  ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) EXTRACT TAR FILE
+>     tar -xvf FILE
+
+
