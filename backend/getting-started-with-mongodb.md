@@ -107,8 +107,12 @@ You can add any collection even if it does not exists.
 
 > Pushing / Pulling Document
 
-      // Removing an item from array
+      // Removing single item from array
       db.COLLECTION.updateMany({ name: "lennon" }, { $pull: { previews: "http://...jpg" } })
       
-      // Adding an item from array
+      // Adding single item to array
       db.COLLECTION.updateMany({ name: "lennon" }, { $push: { previews: "http://...jpg" } })
+
+      // Adding multiple item to array
+      db.COLLECTION.updateOne({ _id: ObjectId(XXX) }, { $push: { previews: { $each: [ { name: "", url: "" } ] } } })
+
