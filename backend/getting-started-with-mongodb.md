@@ -17,16 +17,26 @@ MongoDB is a non-relational database management system (DBMS) that stores data i
 
 
 ### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Common Commands
-- Change current database
-> use DB_NAME
+You can add any collection even if it does not exists.
 
-- Show database and collections
-> show databases | collections 
+> Change current database
 
-- Insert single document
-> db.COLLECTION.insertOne({ })
+      use DB_NAME
 
-- Insert many document
-> db.COLLECTION.insertMany({ })
+> Show database and collections
 
-Note: You can add any collection even if it does not exists.
+      show databases | collections 
+
+> Insert single document
+
+      db.COLLECTION.insertOne({ })
+
+> Insert many document
+
+      db.COLLECTION.insertMany({ })
+
+> Limit return objects by passing second argument
+
+      db.COLLECTION.find({ }, { name: 1, value: 1})
+
+
