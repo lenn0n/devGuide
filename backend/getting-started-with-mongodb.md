@@ -71,11 +71,14 @@ You can add any collection even if it does not exists.
 
 > Querying Arrays
 
-      // Returns exactly 
+      // Returns exactly what inside of previews
       db.COLLECTION.find({ previews: ['http://....png'] }) 
 
       // Returns something that has string of 'http://'
       db.COLLECTION.find({ previews: 'http://' })
+      
+      // Returns if one mathes in the all operator
+      db.COLLECTION.find({ previews: { $all: ['http://....png', 'http://....jpg'] } })
 
 
 
