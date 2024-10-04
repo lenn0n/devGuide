@@ -23,5 +23,10 @@ MongoDB is a non-relational database management system (DBMS) that stores data i
 - Show database and collections
 > show databases | collections 
 
-- Insert singe document
+- Insert single document
 > db.COLLECTION.insertOne({ })
+
+- Insert many document
+> db.COLLECTION.insertMany({ })
+
+Note: You can add any collection even if it does not exists.
