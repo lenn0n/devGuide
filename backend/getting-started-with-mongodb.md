@@ -68,3 +68,14 @@ You can add any collection even if it does not exists.
       // More Complex
       db.COLLECTION.find({ $or: [ { rating: { $gte: 5 } }, { rating: { $in: [4, 5, 6] } } ] })
       db.COLLECTION.find({ $or: [ { rating: { $lt: 5 } }, { rating: { $nin: [4, 5, 6] } } ] })
+
+> Querying Arrays
+
+      // Returns exactly 
+      db.COLLECTION.find({ previews: ['http://....png'] }) 
+
+      // Returns something that has string of 'http://'
+      db.COLLECTION.find({ previews: 'http://' })
+
+
+
