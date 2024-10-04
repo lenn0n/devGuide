@@ -97,3 +97,8 @@ You can add any collection even if it does not exists.
       // Update single document based on ObjectId.
       db.COLLECTION.updateOne({ _id: ObjectId("XXX")}, { $set: { rating: 2, price: "143" } })
 
+      // Update many document based on ObjectId.
+      db.COLLECTION.updateMany({ name: "lennon" }, { $set: { rating: 10, price: "500" } })
+
+      
+
