@@ -39,4 +39,15 @@ You can add any collection even if it does not exists.
 
       db.COLLECTION.find({ }, { name: 1, value: 1})
 
+> Count objects
 
+      db.COLLECTION.find({ }).count()
+
+> Limit return documents
+
+      db.COLLECTION.find({ }).limit(3)
+
+> Sort return documents
+
+      db.COLLECTION.find({ }).sort({ name: 1 or -1 })
+   
