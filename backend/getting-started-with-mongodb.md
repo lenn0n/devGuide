@@ -58,3 +58,13 @@ You can add any collection even if it does not exists.
 > OR Operator Complex Queries 
 
       db.COLLECTION.find({ $or: [{ rate: { $gt: 4 } }, { name: "lennon" }] })
+
+> In / Not In
+
+      // Simple approach
+      db.COLLECTION.find({ rating: { $in: [4, 5, 6] } })
+      db.COLLECTION.find({ rating: { $nin: [4 ,5, 6] } })
+      
+      // More Complex
+      db.COLLECTION.find({ $or: [ { rating: { $gte: 5 } }, { rating: { $in: [4, 5, 6] } } ] })
+      db.COLLECTION.find({ $or: [ { rating: { $lt: 5 } }, { rating: { $nin: [4, 5, 6] } } ] })
