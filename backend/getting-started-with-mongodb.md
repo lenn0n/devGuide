@@ -99,6 +99,16 @@ You can add any collection even if it does not exists.
 
       // Update many document based on ObjectId.
       db.COLLECTION.updateMany({ name: "lennon" }, { $set: { rating: 10, price: "500" } })
-
       
+> Increment / Decrement
 
+      // Increment by 100 or Decrement by 100
+      doc.COLLECTION.updateOne({ _id: ObjectId(XXX)}, {$inc: { price: 100 or -100})
+
+> Pushing / Pulling Document
+
+      // Removing an item from array
+      db.COLLECTION.updateMany({ name: "lennon" }, { $pull: { previews: "http://...jpg" } })
+      
+      // Adding an item from array
+      db.COLLECTION.updateMany({ name: "lennon" }, { $push: { previews: "http://...jpg" } })
