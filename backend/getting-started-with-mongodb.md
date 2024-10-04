@@ -80,5 +80,8 @@ You can add any collection even if it does not exists.
       // Returns if one mathes in the all operator
       db.COLLECTION.find({ previews: { $all: ['http://....png', 'http://....jpg'] } })
 
+      // Objects
+       db.COLLECTION.find( {"previews.url" : "http://....jpg"} )
+
 
 
