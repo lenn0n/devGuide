@@ -51,4 +51,6 @@ You can add any collection even if it does not exists.
 
       db.COLLECTION.find({ }).sort({ name: 1 or -1 })
 
-      
+> Operators and Complex Queries (gt = greater than, lt = less than, gte = greater than equal)
+
+      db.COLLECTION.find({ rate: { $gt: 4 || $lte: 2 } })
