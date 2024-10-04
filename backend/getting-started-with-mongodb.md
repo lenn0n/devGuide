@@ -81,7 +81,13 @@ You can add any collection even if it does not exists.
       db.COLLECTION.find({ previews: { $all: ['http://....png', 'http://....jpg'] } })
 
       // Objects
-       db.COLLECTION.find( {"previews.url" : "http://....jpg"} )
+      db.COLLECTION.find( {"previews.url" : "http://....jpg"} )
 
+> Deleting Documents
 
+      // Delete one document, set the ObjectID.
+      db.COLLECTION.previews.deleteOne({ _id: ObjectId("XXXXX") })
+
+      // Delete many documents
+      db.COLLECTION.previews.deleteMany({ name: "Javascript" })
 
