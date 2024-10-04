@@ -91,3 +91,9 @@ You can add any collection even if it does not exists.
       // Delete many documents
       db.COLLECTION.previews.deleteMany({ name: "Javascript" })
 
+> Updating Document
+
+
+      // Update single document based on ObjectId.
+      db.COLLECTION.updateOne({ _id: ObjectId("XXX")}, { $set: { rating: 2, price: "143" } })
+
