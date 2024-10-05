@@ -42,6 +42,7 @@
 
     const NAME_OF_YOUR_FUNCTION = () => { }
     module.exports = NAME_OF_YOUR_FUNCTION
+    module.exports.SECOND_FUNCTION = NAME_OF_YOUR_FUNCTION
     const { NAME_OF_YOUR_FUNCTION } = require(./PATH_OF_YOUR_FUNCTION)
 
     or
@@ -77,3 +78,32 @@ In this example, we’re using exports to export multiple functions from our mod
     console.log(utils.add(2, 3)); // Outputs: 5
     console.log(utils.subtract(5, 2)); // Outputs: 3
     console.log(utils.multiply(2, 3)); // Outputs: 6
+
+
+## 🚦 Event Emitters and Util
+    
+
+    var events = require('events');
+    var util = require('util');
+    
+    var myEmitter = new events.EventEmitter();
+    
+    myEmitter.on('someEvent', (msg) => {
+        console.log(msg);
+    })
+    
+    myEmitter.emit("someEvent", "The event `someEvent` was emitted.");
+    
+    // Utils will inherit certain things in NodeJS
+    // Let say we have created a class:
+    
+    const Person = function (name){
+      this.name = name
+    }
+    
+    util.inherits(Person, events.EventEmitter);
+    
+    var author = new Person("Lennon");
+    author.on('write', (message, x) => { console.log(`The author ${author.name} wrote about ${message}`) })
+    
+    author.emit("write", "something about life.")
