@@ -110,3 +110,42 @@ Output:
 >  The event `someEvent` was emitted.
 > 
 >  The author `Lennon` wrote `something about life.`
+> 
+
+## FS Module
+This module can be asyn or synchrorous operation. 
+
+        var fs = require('fs');
+
+⏳ Synchronous (needs to finish current line before moving to the next line)
+
+
+    fs.writeFileSync('readMe.txt', 'Hello');
+    var readMe = fs.readFileSync('readme.txt', 'utf-8')
+    console.log(readMe);
+
+⌚ Asynchronous
+
+    fs.readFile('readme.txt', 'utf-8', (err, data) => {
+        console.log(data)
+    })
+
+🗑️ Removing file or directory
+
+    fs.unlink('readMe.txt')
+
+📂 Create / Remove Folder
+
+    // Synchronously
+    fs.mkdirSync('FOLDER_NAME')
+    fs.rmdirSync('FOLDER_NAME')
+
+
+    // Asynchronously
+    fs.mkdir('FOLDER_NAME', () => {
+        fs.write(./FOLDER_NAME/sampleWrite.txt, "A file was created inside this folder.")
+    })
+
+    fs.rmdir('FOLDER_NAME')
+
+
