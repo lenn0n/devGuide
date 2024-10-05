@@ -1,4 +1,5 @@
-# NodeJS Crash Course
+# 📢 NodeJS Crash Course
+
 🌟 Node.js is a cross-platform, open-source JavaScript runtime environment that can run on any OS. 
 
 🌟 Node.js runs on the V8 JavaScript engine, and executes JavaScript code outside a web browser. 
@@ -19,11 +20,9 @@
     
     sayHi()
 
-## Different ways of exporting function or module in NodeJS
-
 ## ES6 Export
 
-This is ES6 export syntax for a named export. You can have many named exports. 
+ℹ️ This is ES6 export syntax for a named export. You can have many named exports. 
 
     export const NAME_OF_YOUR_FUNCTION = function(){} or ()=>{}
   
@@ -31,7 +30,7 @@ This is ES6 export syntax for a named export. You can have many named exports.
     import { NAME_OF_YOUR_FUNCTION } from "./PATH_OF_YOUR_FUNCTION";
 
 
-This is also ES6 syntax that let you export the function as default.
+ℹ️ This is also ES6 syntax that let you export the function as default.
 
     export default NAME_OF_YOUR_FUNCTION;
   
@@ -39,7 +38,7 @@ This is also ES6 syntax that let you export the function as default.
     import ANY_NAME_YOU_WANT from "./PATH_OF_YOUR_FUNCTION";
 
 ## NodeJS Export
-This is not ES6 syntax, but is regular ES5-compatible syntax using the module.exports and require() infrastructure built into node.js.
+ℹ️ This is not ES6 syntax, but is regular ES5-compatible syntax using the module.exports and require() infrastructure built into node.js.
 
     const NAME_OF_YOUR_FUNCTION = () => { }
     module.exports = NAME_OF_YOUR_FUNCTION
@@ -50,7 +49,7 @@ This is not ES6 syntax, but is regular ES5-compatible syntax using the module.ex
     exports.NAME_OF_YOUR_FUNCTION = () => { }
     const ANY_NAME_YOU_WANT = require(./PATH_OF_YOUR_FUNCTION)
 
-## When to use module.exports vs exports
+## 🤔 When to use module.exports vs exports
 So, which method should you use to export functionality from your module? In general, you should use module.exports when you want to export a single function or object from your module, and exports when you want to export multiple properties or functions from your module. For example, suppose we have a module called utils.js that exports several utility functions:
 
     // utils.js
