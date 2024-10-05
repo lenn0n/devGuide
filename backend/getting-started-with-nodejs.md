@@ -112,10 +112,10 @@ Output:
 >  The author `Lennon` wrote `something about life.`
 > 
 
-## FS Module
+## 🗃️ FS Module
 This module can be asyn or synchrorous operation. 
 
-        var fs = require('fs');
+    var fs = require('fs');
 
 ⏳ Synchronous (needs to finish current line before moving to the next line)
 
