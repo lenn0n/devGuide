@@ -80,19 +80,19 @@ In this example, we’re using exports to export multiple functions from our mod
     console.log(utils.multiply(2, 3)); // Outputs: 6
 
 
-## 🚦 Event Emitters and Util
+## ☢️ Event Emitters and Util
     
 
     var events = require('events');
     var util = require('util');
     
     var myEmitter = new events.EventEmitter();
-    
     myEmitter.on('someEvent', (msg) => {
         console.log(msg);
     })
     
     myEmitter.emit("someEvent", "The event `someEvent` was emitted.");
+
     
     // Utils will inherit certain things in NodeJS
     // Let say we have created a class:
@@ -102,8 +102,12 @@ In this example, we’re using exports to export multiple functions from our mod
     }
     
     util.inherits(Person, events.EventEmitter);
-    
     var author = new Person("Lennon");
-    author.on('write', (message, x) => { console.log(`The author ${author.name} wrote about ${message}`) })
     
+    author.on('write', (message, x) => { console.log(`The author ${author.name} wrote ${message}`) })
     author.emit("write", "something about life.")
+
+Output:
+>  The event `someEvent` was emitted.
+> 
+>  The author `Lennon` wrote `something about life.`
