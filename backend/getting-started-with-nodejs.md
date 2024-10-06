@@ -81,7 +81,7 @@ In this example, we’re using exports to export multiple functions from our mod
 
 
 ## ☢️ Event Emitters and Util
-ℹ️ **EventEmitter**E is a powerful feature in Node. js that enables asynchronous and event-driven programming. A handy tool for making different parts of a program talk to each other by sending and receiving messages.
+ℹ️ **EventEmitter** is a powerful feature in Node. js that enables asynchronous and event-driven programming. A handy tool for making different parts of a program talk to each other by sending and receiving messages.
 
 ℹ️ **Util** module supports the needs of Node.js internal APIs. Many of the utilities are useful for application and module developers as well. One of them is `inherits`
 
@@ -184,7 +184,8 @@ This module can be asyn or synchrorous operation.
             }
 
             res.write(data);
-            res.end()
+            // or
+            res.end(data)
         })
     })
 
