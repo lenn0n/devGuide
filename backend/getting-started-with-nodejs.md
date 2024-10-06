@@ -156,12 +156,17 @@ This module can be asyn or synchrorous operation.
     const fs = require*('fs');
 
     const readStream = fs.createReadStream('./streams/title.txt', { encoding: 'utf8');
+    const writeStream = fs.createWriteStream('./streams/title2.txt', { encoding: 'utf8');
 
     readStream.on('data', (data) => {
         console.log('-----NEW CHUNKS-------');
         console.log(chunk);
         console.log(chunk.toString());
+        writeStream.write(chunk)
     })
+
+    // Simplier verson of writing steam from reading stream
+    readStream.pipe(writeSteam)
 
 
 
