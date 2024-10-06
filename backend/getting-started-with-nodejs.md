@@ -134,7 +134,7 @@ This module can be asyn or synchrorous operation.
 
     fs.unlink('readMe.txt')
 
-📂 Create / Remove Folder
+📂 Create / Remove / Check Folder
 
     // Synchronously
     fs.mkdirSync('FOLDER_NAME')
@@ -146,6 +146,24 @@ This module can be asyn or synchrorous operation.
         fs.write(./FOLDER_NAME/sampleWrite.txt, "A file was created inside this folder.")
     })
 
-    fs.rmdir('FOLDER_NAME')
+    // Check and Remove Folder
+    if (fs.existsSync('./FOLDER_NAME')){
+        fs.rmdir('FOLDER_NAME')
+    }
+
+## 🎏 Streams
+
+    const fs = require*('fs');
+
+    const readStream = fs.createReadStream('./streams/title.txt', { encoding: 'utf8');
+
+    readStream.on('data', (data) => {
+        console.log('-----NEW CHUNKS-------');
+        console.log(chunk);
+        console.log(chunk.toString());
+    })
+
+
+
 
 
