@@ -168,7 +168,25 @@ This module can be asyn or synchrorous operation.
     // Simplier verson of writing steam from reading stream
     readStream.pipe(writeSteam)
 
+## 💻 HTTP Server
 
+
+    const http = require('http');
+
+    const server = http.createServer((req, res) => {
+        console.log(req);
+        res.setHeader('Content-Type', 'text/html');
+
+        // Send an html file to the browser
+        fs.readFile('./index.html', (err, data) => {
+            if (err) {
+                res.write('<html><body> Error Body </body></html>')
+            }
+
+            res.write(data);
+            res.end()
+        })
+    })
 
 
 
