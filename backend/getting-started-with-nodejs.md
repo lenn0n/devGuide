@@ -183,10 +183,16 @@ This module can be asyn or synchrorous operation.
                 res.write('<html><body> Error Body </body></html>')
             }
 
+            res.statusCode = 200
             res.write(data);
             // or
             res.end(data)
         })
+
+        // Redirect page
+        res.statusCode = 301;
+        res.setHeader('Location', '/about');
+        res.end()
     })
 
 
