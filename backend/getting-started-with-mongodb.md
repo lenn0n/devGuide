@@ -116,3 +116,16 @@ MongoDB is a non-relational database management system (DBMS) that stores data i
       // Adding multiple item to array
       db.COLLECTION.updateOne({ _id: ObjectId(XXX) }, { $push: { previews: { $each: [ { name: "", url: "" } ] } } })
 
+
+
+
+
+## 🌿 MongoDB Atlas
+Mongo Atlas allows us to host our database in the cloud. To get started, what we gonna do is, first:
+
+### ➡️ Create an account to their official website
+
+      https://www.mongodb.com/cloud/atlas/register
+
+
+
