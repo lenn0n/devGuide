@@ -127,5 +127,73 @@ Mongo Atlas allows us to host our database in the cloud. To get started, what we
 
       https://www.mongodb.com/cloud/atlas/register
 
+### ➡️ Inside your NodeJS server, install mongodb to interact with your database.
 
+      npm install mongodb
 
+### ➡️ Create a config file inside your project. ( mongodb/db.ts )
+Just replace MONGO_DB_URI with your URI provided by atlas.
+      
+      const { MongoClient, ServerApiVersion } = require('mongodb')
+      
+      // Init Database URI and other options
+      const client = new MongoClient(process.env.MONGO_DB_URI, {
+        serverApi: {
+          version: ServerApiVersion.v1,
+          strict: true,
+          deprecationErrors: true,
+        }
+      });
+      
+      // Expose for global use (mongoDB)
+      var dbConnection: null
+      
+      // Handle connections
+      module.exports = {
+        connectToDb: async (dbName = undefined, callback: Function) => {
+          return await client.connect()
+            .then((client: { db: Function }) => {
+              dbConnection = client.db(dbName)
+              return callback()
+            })
+            .catch((err: null) => {
+              return callback(err)
+            })
+        },
+        mongoDB: () => dbConnection
+      }
+
+### ➡️ Insert this lines of code in your app ( src/app.ts )
+
+      // Mongo DB Initialization
+      const { connectToDb } = require("@mongodb")
+      
+      // Connect to Mongo and start the server
+      connectToDb("portfolio", (err: any) => {
+        if (!err) {
+          // Start server
+          app.listen(process.env.SERVER_PORT, () => {
+            console.info(`API is now running on port ${process.env.SERVER_PORT}. MongoDB was also initialized.`)
+          })
+        } else {
+          console.error(`An error occured while trying to connect to MongoDB URI. ${process.env.MONGO_DB_URI}`);
+        }
+      })
+
+### ➡️ Finally, mongoDB is now available. We have imported the mongoDB as global var.
+
+      const { mongoDB } = require("@mongodb")
+      
+        mongoDB()
+          .collection('social_links')
+          .find()
+          .sort()
+          .toArray()
+          .then((data: {}) => {
+            res.status(200).json(data)
+          })
+          .catch((err: null) => {
+            res.status(500).json({
+              message: "An error occured while trying to fulfill your request."
+            })
+          })
