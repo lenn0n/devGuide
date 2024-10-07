@@ -33,7 +33,7 @@ MongoDB is a non-relational database management system (DBMS) that stores data i
 
 > 💡 Insert many document
 
-      db.COLLECTION.insertMany({ })
+      db.COLLECTION.insertMany([{...}])
 
 > 💡 Limit return objects by passing second argument
 
