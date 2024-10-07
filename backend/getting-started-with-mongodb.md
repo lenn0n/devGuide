@@ -117,7 +117,19 @@ MongoDB is a non-relational database management system (DBMS) that stores data i
       db.COLLECTION.updateOne({ _id: ObjectId(XXX) }, { $push: { previews: { $each: [ { name: "", url: "" } ] } } })
 
 
+### 🥨 ObjectID
+This util is essential for mutating data inside of our collections.
 
+      const { ObjectId } = require('mongodb')
+
+💡 Needed to pass in id params `_id` when deleting a document: 
+
+      ...deleteOne({ _id: ObjectId(req.params.id) });
+      ...findOne({ _id: ObjectId(req.params.id) });
+
+💡 Checking of passed ID if valid or not: 
+
+      if (ObjectID.isValid(req.params.id) { ... }
 
 
 ## 🌿 MongoDB Atlas
