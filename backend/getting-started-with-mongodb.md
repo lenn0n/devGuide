@@ -16,7 +16,7 @@ MongoDB is a non-relational database management system (DBMS) that stores data i
 🪜 Next, extract the mongo shell you have downloaded from above and add the executable file in your system **environmental variables**. I am using windows so the step in Linux might be different.
 
 
-### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Common Commands
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) MongoSH Commands
 ℹ️ You can add any collection even if it does not exists.
 
 > 💡 Change current database
@@ -140,7 +140,7 @@ This util is essential for mutating data inside of our collections.
 
 
 ## 🌿 MongoDB Atlas
-Mongo Atlas allows us to host our database in the cloud. To get started, what we gonna do is, first:
+Mongo Atlas allows us to host our database in the cloud. To get started, first:
 
 ### ➡️ Create an account to their official website
 
