@@ -42,10 +42,17 @@ MongoDB is a non-relational database management system (DBMS) that stores data i
 > 💡 Count objects
 
       db.COLLECTION.find({ }).count()
+      // Send Maxpage
+      db.COLLECTION.find({ }).count() / limit
 
 > 💡 Limit return documents
 
       db.COLLECTION.find({ }).limit(3)
+
+> 💡 Skip (Pagination)
+
+      const page = 1, limit = 5
+      db.COLLECTION.find({}).skip((page - 1) * limit).limit(limit)
 
 > 💡 Sort return documents
 
