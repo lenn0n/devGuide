@@ -69,7 +69,7 @@ MongoDB is a non-relational database management system (DBMS) that stores data i
       db.COLLECTION.find({ $or: [ { rating: { $gte: 5 } }, { rating: { $in: [4, 5, 6] } } ] })
       db.COLLECTION.find({ $or: [ { rating: { $lt: 5 } }, { rating: { $nin: [4, 5, 6] } } ] })
 
-> Querying Arrays
+> 💡 Querying Arrays
 
       // Returns exactly what inside of previews
       db.COLLECTION.find({ previews: ['http://....png'] }) 
@@ -83,7 +83,7 @@ MongoDB is a non-relational database management system (DBMS) that stores data i
       // Objects
       db.COLLECTION.find( {"previews.url" : "http://....jpg"} )
 
-> Deleting Documents
+> 💡 Deleting Documents
 
       // Delete one document, set the ObjectID.
       db.COLLECTION.previews.deleteOne({ _id: ObjectId("XXXXX") })
@@ -91,7 +91,7 @@ MongoDB is a non-relational database management system (DBMS) that stores data i
       // Delete many documents
       db.COLLECTION.previews.deleteMany({ name: "Javascript" })
 
-> Updating Document
+> 💡 Updating Document
 
 
       // Update single document based on ObjectId.
@@ -100,12 +100,12 @@ MongoDB is a non-relational database management system (DBMS) that stores data i
       // Update many document based on ObjectId.
       db.COLLECTION.updateMany({ name: "lennon" }, { $set: { rating: 10, price: "500" } })
       
-> Increment / Decrement
+> 💡 Increment / Decrement
 
       // Increment by 100 or Decrement by 100
       doc.COLLECTION.updateOne({ _id: ObjectId(XXX)}, {$inc: { price: 100 or -100})
 
-> Pushing / Pulling Document
+> 💡 Pushing / Pulling Document
 
       // Removing single item from array
       db.COLLECTION.updateMany({ name: "lennon" }, { $pull: { previews: "http://...jpg" } })
