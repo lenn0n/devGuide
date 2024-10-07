@@ -2,6 +2,9 @@
 
 📁 devGuide/ai 
   - Face Swap, Face Enhancer NSFW
+
+📁 devGuide/backend 
+  - MongoDB, NodeJS
     
 📁 devGuide/devops
   - CI/CD, Cloud EC2 ECS, NGINX, GitHub Actions, SSL Certs, Linux, Jenkins
