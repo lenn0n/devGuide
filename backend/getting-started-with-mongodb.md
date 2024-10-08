@@ -216,3 +216,88 @@ Just replace MONGO_DB_URI with your URI provided by atlas.
               message: "An error occured while trying to fulfill your request."
             })
           })
+
+
+# 📢 Best Practices
+➡️ Having those commands wont be enough in the long run. It's good to know there are some practices we can try in order to improve our data retrieving. Are you fetching or overfetching? 
+Imagine you have 10,000 users and you have to find a specific order of the user, what would be the most efficient way to do that?
+
+
+## 💡 Data Modeling for Performance
+Careful data modeling is crucial in MongoDB. Unlike traditional relational databases, MongoDB is schema-less, allowing flexibility but requiring thoughtful design. Consider the following tips:
+
+> Embedding
+
+Imagine you’re building an e-commerce application, and you have two entities: User and Order. You can choose to embed the order details within the user document. This approach is suitable when orders are small and directly related to a user.
+
+      {
+        "_id": ObjectId("user_id"),
+        "name": "John Doe",
+        "email": "john@example.com",
+        "orders": [
+          {
+            "orderNumber": "12345",
+            "totalAmount": 100.00,
+            "items": [
+              { "productId": ObjectId("product_id"), "quantity": 2 },
+              { "productId": ObjectId("another_product_id"), "quantity": 1 }
+            ]
+          },
+          // Other orders...
+        ]
+      }
+
+> Referencing
+
+However, if orders are complex with many fields and you want to maintain a separation between users and orders, you can reference orders from the user document.
+
+User Document
+
+      {
+        "_id": ObjectId("user_id"),
+        "name": "John Doe",
+        "email": "john@example.com"
+      }
+
+Order Document
+      
+      {
+        "_id": ObjectId("order_id"),
+        "userId": ObjectId("user_id"),
+        "orderNumber": "12345",
+        "totalAmount": 100.00,
+        "items": [
+          { "productId": ObjectId("product_id"), "quantity": 2 },
+          { "productId": ObjectId("another_product_id"), "quantity": 1 }
+        ]
+      }
+
+## 💡 Indexing Strategies
+Imagine you have a collection of Products and you frequently query products based on both their category and price range.
+
+Without an index, querying might be slow as MongoDB would need to scan through the entire collection. However, you can create a compound index on the category and price fields to significantly speed up these queries.
+
+      db.products.createIndex({ category: 1, price: 1 });
+
+With this compound index in place, queries like the following will benefit from it:
+
+      db.products.find({ category: "Electronics", price: { $gte: 100, $lte: 500 } });
+
+⚠❌ Avoid Over-Indexing: Unnecessary indexes consume storage and slow down write operations. 
+
+### 📇 Covering Indexes
+Include all necessary fields in an index to prevent the need for additional data fetching. 
+
+With this covering index, the following query can be satisfied using only the index and without needing to access the actual documents:
+
+      db.orders.find({ orderNumber: "12345" }, { _id: 0, orderNumber: 1, totalAmount: 1 });
+
+
+## 💡 Aggregation Framework
+
+Instead of retrieving all products in that category and performing the calculation in your application code, you can use the aggregation framework to directly compute the average price in the database:
+
+      db.products.aggregate([
+        { $match: { category: "Electronics" } }, // Filter products in the desired category
+        { $group: { _id: null, avgPrice: { $avg: "$price" } } } // Calculate the average price
+      ]);
