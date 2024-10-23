@@ -7,11 +7,11 @@ A **Dockerfile** is needed to build an image.
 
 ### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) PUSH COMMAND
 >     docker build -f PATH_OF_DOCKERFILE . -t DOCKERHUB_USERNAME/DOCKER_IMAGE:TAG-VERSION
->     docker build -f dockerfiles/admin.prod.Dockerfile . -t oledev/oleplatform-front-admin:prod-4.0
 >     docker push DOCKERHUB_USERNAME/DOCKER_IMAGE:TAG-VERSION
->     docker push oledev/oleplatform-front-admin:prod-4.0
 
 
+>     docker build -f Dockerfile . -t lennonjansuy/dentalism-app:latest
+>     docker push lennonjansuy/dentalism-app:latest
 
 ### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) RUN
 >      docker run -dp 127.0.0.1:EXTERNAL_PORT:INTERNAL_PORT NAME_OF_CONTAINER
