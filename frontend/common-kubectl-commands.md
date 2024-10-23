@@ -13,6 +13,20 @@ A **Dockerfile** is needed to build an image.
 >     docker build -f Dockerfile . -t lennonjansuy/dentalism-app:latest
 >     docker push lennonjansuy/dentalism-app:latest
 
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) SAMPLE DOCKERFILE
+
+    FROM node:16.18.0-alpine
+    WORKDIR /app
+    COPY . .
+    RUN npm install
+    RUN npm run build
+    
+    # INSTALL MODULES
+    RUN npm install express cors
+    
+    # RUN IN EXPRESS
+    ENTRYPOINT ["node", "express-serve.js"]
+
 ### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) RUN
 >      docker run -dp 127.0.0.1:EXTERNAL_PORT:INTERNAL_PORT NAME_OF_CONTAINER
 >      docker run --name NAME_OF_CONTAINER -d -p EXTERNAL_PORT:INTERNAL_PORT IMAGE:TAG
