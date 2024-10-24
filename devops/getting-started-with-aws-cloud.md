@@ -1,8 +1,6 @@
 
 
---------------------------------
-### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Getting Started with Amazon EKS
---------------------------------
+# ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Getting Started with Amazon EKS
 
 This guide will walk you through the process of setting up a Kubernetes cluster using Amazon EKS (Elastic Kubernetes Service) step by step.
 
@@ -46,9 +44,8 @@ aws configure
 3. Create an **Access Key** for programmatic access.
 
 
---------------------------------
-### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) GETTING STARTED WITH AWS ECS:
---------------------------------
+# ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Getting Started with Amazon ECS:
+
 
 Prequisite: Setup Amazon ECR
  - Install AWS CLI
@@ -63,9 +60,9 @@ Prequisite: Setup Amazon ECR
 
 
 
---------------------------------
-### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) GETTING STARTED WITH AWS EC2:
---------------------------------
+
+# ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Getting Started with Amazon EC2:
+
 
 1. Create an Instance
  - Set Security Group 
@@ -74,10 +71,10 @@ Prequisite: Setup Amazon ECR
 2. Login SSH
  - ssh -i KEY.PEM USER@HOST
 3. Update packages inside of VM and install required dependencies
-   
---------------------------------
-### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) How to Restart Deployments in Amazon ECS
---------------------------------
+
+
+# ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) How to Restart Deployments in Amazon ECS
+
 
 To restart deployments in Amazon Elastic Container Service (ECS), you can use the following command:
 
@@ -87,9 +84,8 @@ To restart deployments in Amazon Elastic Compute Cloud (EC2) (Docker inside Mach
 
 	kubectl rollout restart DEPLOYMENT
 
---------------------------------
-### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) CICD RealWorld Example:
---------------------------------
+# ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) CICD RealWorld Example:
+
 
 1. Talk about phasing:
 
