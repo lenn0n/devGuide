@@ -43,6 +43,52 @@ aws configure
 2. Navigate to **Security Credentials**.
 3. Create an **Access Key** for programmatic access.
 
+### Copy Kubernetes Configuration from AWS
+Update your kubeconfig to allow kubectl to connect to your new EKS cluster:
+
+	aws eks update-kubeconfig --name <your-cluster-name> --region <your-region>
+
+### Creating an Admin User for Dashboard Access
+Create a YAML file (e.g., admin-user.yaml) with the following content:
+
+	apiVersion: v1
+	kind: ServiceAccount
+	metadata:
+	  name: admin-user
+	  namespace: kubernetes-dashboard
+	---
+	apiVersion: rbac.authorization.k8s.io/v1
+	kind: ClusterRoleBinding
+	metadata:
+	  name: admin-user
+	roleRef:
+	  apiGroup: rbac.authorization.k8s.io
+	  kind: ClusterRole
+	  name: cluster-admin
+	subjects:
+	- kind: ServiceAccount
+	  name: admin-user
+	  namespace: kubernetes-dashboard
+
+
+### Apply the Configuration and Generate Token
+
+	kubectl apply -f admin-user.yaml
+
+### Generate a token for the admin user:
+
+	kubectl -n kubernetes-dashboard create token admin-user
+
+### Creating Docker Registry Secret
+
+To allow Kubernetes to pull images from Docker Hub, create a secret using the following command:
+
+	kubectl create secret docker-registry dockerhub \
+	  --docker-username=XX \
+	  --docker-password=XX \
+	  --docker-email=XX \
+	  --docker-server=https://index.docker.io/v1/
+
 
 # ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Getting Started with Amazon ECS:
 
@@ -58,6 +104,11 @@ Prequisite: Setup Amazon ECR
 2. Create Task Definition
 3. Create Service/Task
 
+Setting Up Ingress
+
+To access your services externally, you need to install an ingress controller. Here's how to install the Nginx Ingress Controller:
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/aws/deploy.yaml
 
 
 
