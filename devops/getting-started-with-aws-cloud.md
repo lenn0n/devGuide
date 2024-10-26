@@ -48,6 +48,11 @@ Update your kubeconfig to allow kubectl to connect to your new EKS cluster:
 
 	aws eks update-kubeconfig --name <your-cluster-name> --region <your-region>
 
+### Creating Kubernetes Dashboard
+The simpliest way of managing control plane is to use K8s Dashboard, install it:
+
+ 	kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+
 ### Creating an Admin User for Dashboard Access
 Create a YAML file (e.g., admin-user.yaml) with the following content:
 
@@ -78,6 +83,12 @@ Create a YAML file (e.g., admin-user.yaml) with the following content:
 ### Generate a token for the admin user:
 
 	kubectl -n kubernetes-dashboard create token admin-user
+
+ ### Access the K8s Dashboard
+
+ 	kubectl proxy
+
+Finally, Open this URL to your browser: http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/ and use the token generated above to proceed.
 
 ### Creating Docker Registry Secret
 
