@@ -88,7 +88,7 @@ Create a YAML file (e.g., admin-user.yaml) with the following content:
 
  	kubectl proxy
 
-Finally, Open this URL to your browser: http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/ and use the token generated above to proceed.
+Finally, Open this URL in your browser: http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/ and use the token generated above to proceed.
 
 ### Creating Docker Registry Secret
 
