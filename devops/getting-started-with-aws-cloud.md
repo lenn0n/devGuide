@@ -1,59 +1,59 @@
 
 
-# ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Getting Started with Amazon EKS
+# 📂 Getting Started with Amazon EKS
 
 This guide will walk you through the process of setting up a Kubernetes cluster using Amazon EKS (Elastic Kubernetes Service) step by step.
 
-## Prerequisites
+## ➕ Prerequisites
 Before you begin, ensure you have the following:
 
 - An AWS account.
 - Basic knowledge of Kubernetes and AWS services.
 
-## Installation
+## ➕ Installation
 
-### Download and Install Required Tools
+### 💡 Download and Install Required Tools
 - **EKSCTL**: Command line tool for creating EKS clusters.
 - **KUBECTL**: Command line tool for interacting with Kubernetes clusters.
 - **AWS CLI**: Command line tool for managing AWS services.
 
 You can install these tools using package managers like Homebrew on macOS or Chocolatey on Windows, or download them directly from their respective websites.
 
-### Create a Cluster and IAM Role in EKS
+### 💡 Create a Cluster and IAM Role in EKS
 You can create a cluster and the necessary IAM role directly from the AWS Management Console or using `eksctl`. Here’s how to do it with `eksctl`:
 
 ```bash
 eksctl create cluster --name <your-cluster-name> --region <your-region> --nodes 3 --node-type t2.micro
 ```
 
-### Set Up Nodegroup or Fargate
+### 💡 Set Up Nodegroup or Fargate
 Choose whether to use Nodegroups or Fargate for running your applications. Nodegroups use EC2 instances, while Fargate provides a serverless experience.
 
-## Configuring AWS CLI
+## ➕ Configuring AWS CLI
 
-### Configure AWS CLI
+### 💡 Configure AWS CLI
 Open your terminal and run the following command to configure the AWS CLI:
 
 ```bash
 aws configure
 ```
 
-### Create Access Key
+### 💡 Create Access Key
 1. Go to the AWS Management Console.
 2. Navigate to **Security Credentials**.
 3. Create an **Access Key** for programmatic access.
 
-### Copy Kubernetes Configuration from AWS
+### 💡 Copy Kubernetes Configuration from AWS
 Update your kubeconfig to allow kubectl to connect to your new EKS cluster:
 
 	aws eks update-kubeconfig --name <your-cluster-name> --region <your-region>
 
-### Creating Kubernetes Dashboard
+### 💡 Creating Kubernetes Dashboard
 The simpliest way of managing control plane is to use K8s Dashboard, install it:
 
  	kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
 
-### Creating an Admin User for Dashboard Access
+### 💡 Creating an Admin User for Dashboard Access
 Create a YAML file (e.g., admin-user.yaml) with the following content:
 
 	apiVersion: v1
@@ -76,21 +76,21 @@ Create a YAML file (e.g., admin-user.yaml) with the following content:
 	  namespace: kubernetes-dashboard
 
 
-### Apply the Configuration and Generate Token
+### 💡 Apply the Configuration and Generate Token
 
 	kubectl apply -f admin-user.yaml
 
-### Generate a token for the admin user:
+### 💡 Generate a token for the admin user:
 
 	kubectl -n kubernetes-dashboard create token admin-user
 
- ### Access the K8s Dashboard
+ ### 💡 Access the K8s Dashboard
 
  	kubectl proxy
 
 Finally, Open this URL in your browser: http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/ and use the token generated above to proceed.
 
-### Creating Docker Registry Secret
+### 💡 Creating Docker Registry Secret
 
 To allow Kubernetes to pull images from Docker Hub, create a secret using the following command:
 
@@ -101,7 +101,7 @@ To allow Kubernetes to pull images from Docker Hub, create a secret using the fo
 	  --docker-server=https://index.docker.io/v1/
 
 
-# ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Getting Started with Amazon ECS:
+# 📂 Getting Started with Amazon ECS:
 
 
 Prequisite: Setup Amazon ECR
@@ -123,7 +123,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main
 
 
 
-# ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Getting Started with Amazon EC2:
+# 📂 Getting Started with Amazon EC2:
 
 
 1. Create an Instance
@@ -135,7 +135,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main
 3. Update packages inside of VM and install required dependencies
 
 
-# ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) How to Restart Deployments in Amazon ECS
+# 📂 How to Restart Deployments in Amazon ECS
 
 
 To restart deployments in Amazon Elastic Container Service (ECS), you can use the following command:
@@ -146,7 +146,7 @@ To restart deployments in Amazon Elastic Compute Cloud (EC2) (Docker inside Mach
 
 	kubectl rollout restart DEPLOYMENT
 
-# ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) CICD RealWorld Example:
+# 📂 CICD RealWorld Example:
 
 
 1. Talk about phasing:
