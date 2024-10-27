@@ -27,12 +27,12 @@ It's ideal for cases with minimal configuration, such as exposing a standalone a
 Ingress works with an Ingress controller (such as NGINX, Traefik, or HAProxy) deployed within the cluster. 
 The controller manages external traffic and routes it based on Ingress rules defined in Ingress resources.
 
-### Install an Ingress Controller
+### ➕ Install an Ingress Controller
 Ensure you have an Ingress controller running in your cluster, such as NGINX or Traefik.
 
     kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
 
-### Create an Ingress Resource
+### ➕ Create an Ingress Resource
 Define an Ingress resource that routes traffic to your service.
 
     apiVersion: networking.k8s.io/v1
